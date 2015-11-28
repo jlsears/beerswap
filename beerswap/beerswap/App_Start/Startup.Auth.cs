@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using beerswap.Models;
+using Beerswap.Models;
 
-namespace beerswap
+namespace Beerswap
 {
     public partial class Startup
     {

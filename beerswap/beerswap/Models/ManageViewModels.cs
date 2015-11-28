@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace beerswap.Models
+namespace Beerswap.Models
 {
     public class IndexViewModel
     {

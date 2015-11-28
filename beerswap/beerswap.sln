@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "beerswap", "beerswap\beerswap.csproj", "{A8B8A7F4-7CC6-46EE-BFC6-E2477A4968E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beerswap", "beerswap\Beerswap.csproj", "{A8B8A7F4-7CC6-46EE-BFC6-E2477A4968E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "beerswap.tests", "beerswaptests\beerswap.tests.csproj", "{1A7A1695-9F2C-47DE-BE49-8EBDCDEF9BE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A8B8A7F4-7CC6-46EE-BFC6-E2477A4968E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B8A7F4-7CC6-46EE-BFC6-E2477A4968E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8B8A7F4-7CC6-46EE-BFC6-E2477A4968E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A7A1695-9F2C-47DE-BE49-8EBDCDEF9BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A7A1695-9F2C-47DE-BE49-8EBDCDEF9BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A7A1695-9F2C-47DE-BE49-8EBDCDEF9BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A7A1695-9F2C-47DE-BE49-8EBDCDEF9BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
