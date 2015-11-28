@@ -12,8 +12,10 @@ namespace beerswaptests.Models
     public class BeerPostRepositoryTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void BPRepositoryEnsureICanCreateInstance()
         {
+            BeerPostRepository brewing = new BeerPostRepository();
+            Assert.IsNotNull(brewing);
         }
     }
 }

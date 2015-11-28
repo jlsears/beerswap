@@ -7,5 +7,11 @@ namespace Beerswap.Models
 {
     public class BeerPostRepository
     {
+        private BeerContext context;
+
+        public BeerPostRepository()
+        {
+            context = new BeerContext();
+        }
     }
 }
