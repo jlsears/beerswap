@@ -184,6 +184,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BeerContext.cs" />
     <Compile Include="Models\BeerPosting.cs" />
     <Compile Include="Models\BeerPostRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
