@@ -23,5 +23,14 @@ namespace beerswaptests.Models
             string actual = havebeer.BeerName;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void BeerPostingEnsureCanAssignBeerQuantity()
+        {
+            BeerPosting havebeer = new BeerPosting { Quantity = 5 };
+            int expected = 5;
+            int actual = havebeer.Quantity;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
