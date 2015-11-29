@@ -93,6 +93,19 @@ namespace beerswaptests.Models
 
         }
 
+        [TestMethod]
+        public void EnsureICanDeleteABeerPosting()
+        {
+            //my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+            ConnectMocksToDataSource();
+
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            BeerPosting added_posting = brewing.CreatePosting("Swill", userA);
+
+            brewing.RemoveBeerPosting(added_posting);
+        }
+
 
         // ****************************
         // Swap Tests

@@ -54,5 +54,11 @@ namespace Beerswap.Models
         {
             return context.BeerPostings.ToList();
         }
+
+        public void RemoveBeerPosting(BeerPosting hastalavista)
+        {
+            context.BeerPostings.Remove(hastalavista);
+            context.SaveChanges();
+        }
     }
 }
