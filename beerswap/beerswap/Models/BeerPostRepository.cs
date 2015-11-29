@@ -23,6 +23,12 @@ namespace Beerswap.Models
             context = _context;
         }
 
+
+        // ************************
+        // Beer Postings Methods
+        // ************************
+
+
         public BeerPosting CreatePosting(string beername, ApplicationUser owner)
         {
             BeerPosting drinkup = new BeerPosting { BeerName = beername, Owner = owner };
@@ -30,6 +36,23 @@ namespace Beerswap.Models
             context.SaveChanges();
 
             return drinkup;
+        }
+
+        public List<BeerPosting> GetBeerPostings(ApplicationUser specificUser)
+        {
+            var query = from b in context.BeerPostings where b.Owner == specificUser select b;
+            return query.ToList<BeerPosting>();
+        }
+
+        public int GetBeerPostingCount()
+        {
+            var query = from p in context.BeerPostings select p;
+            return query.Count();
+        }
+
+        public List<BeerPosting> GetAllPostings()
+        {
+            return context.BeerPostings.ToList();
         }
     }
 }
