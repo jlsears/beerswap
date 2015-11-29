@@ -60,5 +60,29 @@ namespace Beerswap.Models
             context.BeerPostings.Remove(hastalavista);
             context.SaveChanges();
         }
+
+        public bool EditBeerPostingName(int _postId, string newName)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _postId select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                found_post.BeerName = newName;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }
