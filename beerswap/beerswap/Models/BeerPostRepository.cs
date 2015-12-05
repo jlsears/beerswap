@@ -84,5 +84,49 @@ namespace Beerswap.Models
             }
             return result;
         }
+
+        // ************************
+        // Swap Methods
+        // ************************
+
+        public int GetSwapCount()
+        {
+            var query = from s in context.Swaps select s;
+            return query.Count();
+        }
+
+        public bool AddSwap(int _beerpostid, Swap haveSwap)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
+            BeerPosting foundPosting = null;
+            bool result = true;
+            try
+            {
+                foundPosting = query.Single<BeerPosting>();
+                foundPosting.Swaps.Add(haveSwap);
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch(ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public int GetBeerSwapCount()
+        {
+            var query = from s in context.Swaps select s;
+            return query.Count();
+        }
+
+        public List<Swap> GetAllSwaps()
+        {
+            var query = from s in context.BeerPostings select s;
+            return query.SelectMany(beerposting => beerposting.Swaps).ToList();
+        }
     }
 }

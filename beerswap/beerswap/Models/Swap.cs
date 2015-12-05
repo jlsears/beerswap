@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace Beerswap.Models
 {
     public class Swap
     {
+        [Key]
         public int SwapId { get; set; }
         public ApplicationUser OfferUser { get; set; }
         public string BeerName { get; set; }

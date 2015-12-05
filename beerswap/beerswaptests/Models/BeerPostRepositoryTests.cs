@@ -126,16 +126,48 @@ namespace beerswaptests.Models
         // Swap Tests
         // ****************************
 
-        //[TestMethod]
-        //public void BPRepositoryEnsureICanAddSwapToPosting()
-        //{
-        //    BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
-        //    Swap swapping = new Swap { SwapId = 1, BeerOffered = "Dos Perros"};
-        //    my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill" });
+        [TestMethod]
+        public void BPRepositoryEnsureICanAddSwapToPosting()
+        {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            Swap swapping = new Swap { SwapId = 1, BeerOffered = "Dos Perros" };
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill" });
 
-        //    ConnectMocksToDataSource();
+            ConnectMocksToDataSource();
+
+            bool actual = brewing.AddSwap(1, swapping);
+
+            Assert.AreEqual(1, brewing.GetSwapCount());
+            Assert.IsTrue(actual);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanGetAllSwaps()
+        {
+            /* Begin Arrange */
+
+            var swaps_here = new List<Swap>
+            {
+                new Swap { BeerName = "Good Beer", SwapId = 1}
+            };
+
+            my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1, Swaps = swaps_here });
+            my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2, Swaps = swaps_here });
+            ConnectMocksToDataSource();
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            /* End Arrange */
+
+            /* Begin Act */
+            int expected = 2;
+            int actual = brewing.GetAllSwaps().Count;
+            /* End Act */
+
+            /* Begin Assert */
+            Assert.AreEqual(expected, actual);
+            /* End Assert */
+        }
 
 
-        //}
     }
-}
+    }
+
