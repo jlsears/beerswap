@@ -73,6 +73,19 @@ namespace beerswaptests.Models
         }
 
         [TestMethod]
+        public void BPRepositoryEnsureICanGetAllBeerPostings()
+        {
+            my_beerpostings.Add(new BeerPosting { BeerName = "Something sour", Quantity = 5 , Owner = userA});
+            my_beerpostings.Add(new BeerPosting { BeerName = "Something lemon", Quantity = 3, Owner = userB });
+
+            ConnectMocksToDataSource();
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            List<BeerPosting> thesePosts = brewing.GetAllPostings();
+            Assert.AreEqual(2, brewing.GetBeerPostingCount());
+        }
+
+        [TestMethod]
         public void BPRepositoryEnsureICanGetBeerPostingCount()
         {
             var data = my_beerpostings.AsQueryable();
@@ -109,16 +122,52 @@ namespace beerswaptests.Models
         [TestMethod]
         public void BPRepositoryEnsureICanEditABeerPostingName()
         {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
             ConnectMocksToDataSource();
 
+            BeerPosting added_posting = new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA };
+            my_beerpostings.Add(added_posting);
+
+            bool editing = brewing.EditBeerPostingName(1, "Other Swill");
+
+            string actual = "Other Swill";
+
+            Assert.AreEqual(actual, added_posting.BeerName);
+            Assert.IsTrue(editing);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanEditABeerPostingQuantity()
+        {
             BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            ConnectMocksToDataSource();
 
-            BeerPosting added_posting = brewing.CreatePosting("Swill", userA);
+            BeerPosting added_posting =new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Quantity = 5 };
+            my_beerpostings.Add(added_posting);
 
-            string actual = "Other swill";
+            bool editing = brewing.EditBeerPostingQuantity(1, 3);
 
-            brewing.EditBeerPostingName(1, "Other swill");
-            Assert.AreEqual(actual, "Other swill");
+            int actual = 3;
+
+            Assert.AreEqual(actual, added_posting.Quantity);
+            Assert.IsTrue(editing);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanEditABeerPostingNote()
+        {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            ConnectMocksToDataSource();
+
+            BeerPosting added_posting = new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Note = "I don't like this beer" };
+            my_beerpostings.Add(added_posting);
+
+            bool editing = brewing.EditBeerPostingNote(1, "I mean I really, really don't like this beer");
+
+            string actual = "I mean I really, really don't like this beer";
+
+            Assert.AreEqual(actual, added_posting.Note);
+            Assert.IsTrue(editing);
         }
 
 

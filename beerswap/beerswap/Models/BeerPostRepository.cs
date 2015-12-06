@@ -85,6 +85,53 @@ namespace Beerswap.Models
             return result;
         }
 
+        public bool EditBeerPostingQuantity(int _beerpostid, int _newquantity)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                found_post.Quantity = _newquantity;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public bool EditBeerPostingNote(int _beerpostid, string _newnote)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                found_post.Note = _newnote;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+
         // ************************
         // Swap Methods
         // ************************

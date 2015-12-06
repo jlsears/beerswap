@@ -32,5 +32,14 @@ namespace beerswaptests.Models
             int actual = havebeer.Quantity;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void BeerPostingEnsureCanAssignNote()
+        {
+            BeerPosting havebeer = new BeerPosting { Note = "Sample note offering beers here." };
+            string expected = "Sample note offering beers here.";
+            string actual = havebeer.Note;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
