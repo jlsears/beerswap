@@ -91,8 +91,7 @@ namespace Beerswap.Models
 
         public int GetSwapCount()
         {
-            var query = from s in context.Swaps select s;
-            return query.Count();
+            return GetAllSwaps().Count;
         }
 
         public bool AddSwap(int _beerpostid, Swap haveSwap)
@@ -117,11 +116,11 @@ namespace Beerswap.Models
             return result;
         }
 
-        public int GetBeerSwapCount()
-        {
-            var query = from s in context.Swaps select s;
-            return query.Count();
-        }
+        //public int GetBeerSwapCount()
+        //{
+        //    var query = from s in context.Swaps select s;
+        //    return query.Count();
+        //}
 
         public List<Swap> GetAllSwaps()
         {
