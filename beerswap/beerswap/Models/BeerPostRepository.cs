@@ -174,5 +174,80 @@ namespace Beerswap.Models
             var query = from s in context.BeerPostings select s;
             return query.SelectMany(beerposting => beerposting.Swaps).ToList();
         }
+
+        public List<Swap> GetThisSwap(int _swapid)
+        {
+            var query = from s in context.Swaps where s.SwapId == _swapid  select s;
+            return query.ToList<Swap>();
+        }
+
+        public bool EditBeerOfferedName(int _postid, Swap _swap, string _newName)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                _swap.BeerOffered = _newName;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public bool EditQtyOffered(int _postid, Swap _swap, int _qtyoffered)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                _swap.QtyOffered = _qtyoffered;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public bool EditSwapAcceptanceStatus(int _postid, Swap _swap, bool _swapacceptance)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                _swap.AcceptSwap = _swapacceptance;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 }

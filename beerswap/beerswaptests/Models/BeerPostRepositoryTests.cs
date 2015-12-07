@@ -104,6 +104,8 @@ namespace beerswaptests.Models
             my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill" });
             mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(b => b.GetEnumerator()).Returns(data.GetEnumerator());
 
+            Assert.AreEqual(1, brewing.GetBeerPostingCount());
+
         }
 
         [TestMethod]
@@ -193,10 +195,7 @@ namespace beerswaptests.Models
         [TestMethod]
         public void BPRepositoryEnsureICanGetAllSwaps()
         {
-            var swaps_here = new List<Swap>
-            {
-                new Swap { BeerName = "Good Beer", SwapId = 1}
-            };
+            var swaps_here = new List<Swap> { new Swap { BeerName = "Good Beer", SwapId = 1} };
 
             my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1, Swaps = swaps_here });
             my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2, Swaps = swaps_here });
@@ -208,6 +207,104 @@ namespace beerswaptests.Models
 
             Assert.AreEqual(expected, actual);
         }
-      }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanGetSpecificSwap()
+        {
+            var swaps_here = new Swap { BeerName = "Good Beer", SwapId = 1 };
+            var swaps_again = new Swap { BeerName = "Good Beer", SwapId = 2 };
+
+            my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1 });
+            my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2 });
+            ConnectMocksToDataSource();
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            int expected = 1;
+            brewing.AddSwap(1, swaps_here);
+            int actual = brewing.GetThisSwap(1).Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanEditBeerOfferedName()
+        {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            Swap swapping = new Swap { SwapId = 1, BeerOffered = "generic beer" };
+            my_beerpostings.Add( new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+
+            ConnectMocksToDataSource();
+            bool nameChange = brewing.AddSwap(1, swapping);
+
+            brewing.EditBeerOfferedName(1, swapping, "Dos Perros");
+
+            string actual = "Dos Perros";
+
+            Assert.AreEqual(actual, swapping.BeerOffered);
+            Assert.IsTrue(nameChange);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanEditBeerOfferedQuantity()
+        {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            Swap swapping = new Swap { SwapId = 1, QtyOffered = 4 };
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+
+            ConnectMocksToDataSource();
+            bool adding = brewing.AddSwap(1, swapping);
+
+            brewing.EditQtyOffered(1, swapping, 3);
+
+            int actual = 3;
+
+            Assert.AreEqual(actual, swapping.QtyOffered);
+            Assert.IsTrue(adding);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanEditSwapAcceptedStatus()
+        {
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+            Swap swapping = new Swap { SwapId = 1, AcceptSwap = false };
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+
+            ConnectMocksToDataSource();
+            bool adding = brewing.AddSwap(1, swapping);
+
+            brewing.EditSwapAcceptanceStatus(1, swapping, true);
+
+            bool actual = true;
+
+            Assert.AreEqual(actual, swapping.AcceptSwap);
+            Assert.IsTrue(adding);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanGetSwapCount()
+        {
+            var data = my_beerpostings.AsQueryable();
+
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.Provider).Returns(data.Provider);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.Expression).Returns(data.Expression);
+
+            mock_context.Setup(m => m.BeerPostings).Returns(mock_beerpostings.Object);
+
+            //int actual = brewing.GetBeerPostingCount();
+
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill" });
+            Swap swapping = new Swap { SwapId = 1, BeerOffered = "Dos Perros" };
+            brewing.AddSwap(1, swapping);
+
+            int actual = brewing.GetSwapCount();
+
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(b => b.GetEnumerator()).Returns(data.GetEnumerator());
+            Assert.AreEqual(1, brewing.GetSwapCount());
+        }
+    }
     }
 

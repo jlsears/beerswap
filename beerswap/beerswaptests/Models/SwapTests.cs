@@ -15,12 +15,22 @@ namespace beerswaptests.Models
         }
 
         [TestMethod]
-        public void SwapEnsureICanAssignQtyOffered()
+        public void SwapEnsureICanAssignQtyAvailable()
         {
             Swap swapping = new Swap();
             swapping.QtyOffered = 3;
             int expected = 3;
             int actual = swapping.QtyOffered;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SwapEnsureICanAssignQtyWanted()
+        {
+            Swap swapping = new Swap();
+            swapping.QtyWanted = 2;
+            int expected = 2;
+            int actual = swapping.QtyWanted;
             Assert.AreEqual(expected, actual);
         }
 
@@ -33,5 +43,26 @@ namespace beerswaptests.Models
             bool actual = swapping.AcceptSwap;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void SwapEnsureICanAssignBeerNameOffered()
+        {
+            Swap swapping = new Swap();
+            swapping.BeerOffered = "Dos Perros";
+            string expected = "Dos Perros";
+            string actual = swapping.BeerOffered;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SwapEnsureICanAssignBeerNameAvailable()
+        {
+            Swap swapping = new Swap();
+            swapping.BeerName = "Pale Ale";
+            string expected = "Pale Ale";
+            string actual = swapping.BeerName;
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
