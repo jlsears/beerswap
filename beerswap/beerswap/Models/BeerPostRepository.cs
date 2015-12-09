@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace Beerswap.Models
 {
@@ -10,6 +11,8 @@ namespace Beerswap.Models
     public class BeerPostRepository
     {
         private BeerContext context;
+
+        public IDbSet<ApplicationUser> Users { get; { return context.Users; } }
 
         // Repository constructor
         public BeerPostRepository()
@@ -163,22 +166,27 @@ namespace Beerswap.Models
             return result;
         }
 
-        //public int GetBeerSwapCount()
-        //{
-        //    var query = from s in context.Swaps select s;
-        //    return query.Count();
-        //}
-
         public List<Swap> GetAllSwaps()
         {
             var query = from s in context.BeerPostings select s;
             return query.SelectMany(beerposting => beerposting.Swaps).ToList();
         }
 
-        public List<Swap> GetThisSwap(int _swapid)
+        public Swap GetSwapById(int _beerpostid, int _swapid)
         {
-            var query = from s in context.Swaps where s.SwapId == _swapid  select s;
-            return query.ToList<Swap>();
+            var query = from s in context.BeerPostings where s.BeerPostingID == _beerpostid select s;
+            //return query.Select(beerposting => beerposting.Swaps).ToList();
+            //BeerPosting found_post = query.Single<BeerPosting>();
+            //Swap query2 = from y in context.Swaps where y.SwapId == _swapid select y;
+            BeerPosting foundit = query.Single<BeerPosting>();
+            var query2 = from x in foundit.Swaps where x.SwapId == _swapid select x;
+            Swap foundagain = query2.Single<Swap>();
+            return foundagain;
+
+            //var query = from s in context.Swaps where s.BeerPostingID == _beerpostid select s;
+            //BeerPosting found_post = query.Single<Swap>();
+
+            //return query.ToList();
         }
 
         public bool EditBeerOfferedName(int _postid, Swap _swap, string _newName)

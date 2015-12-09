@@ -221,7 +221,7 @@ namespace beerswaptests.Models
 
             int expected = 1;
             brewing.AddSwap(1, swaps_here);
-            int actual = brewing.GetThisSwap(1).Count;
+            int actual = brewing.GetSwapById(1, 1).
 
             Assert.AreEqual(expected, actual);
         }
