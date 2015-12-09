@@ -208,23 +208,23 @@ namespace beerswaptests.Models
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void BPRepositoryEnsureICanGetSpecificSwap()
-        {
-            var swaps_here = new Swap { BeerName = "Good Beer", SwapId = 1 };
-            var swaps_again = new Swap { BeerName = "Good Beer", SwapId = 2 };
+        //[TestMethod]
+        //public void BPRepositoryEnsureICanGetSpecificSwap()
+        //{
+        //    var swaps_here = new Swap { BeerName = "Good Beer", SwapId = 1 };
+        //    var swaps_again = new Swap { BeerName = "Good Beer", SwapId = 2 };
 
-            my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1 });
-            my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2 });
-            ConnectMocksToDataSource();
-            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+        //    my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1 });
+        //    my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2 });
+        //    ConnectMocksToDataSource();
+        //    BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 
-            int expected = 1;
-            brewing.AddSwap(1, swaps_here);
-            int actual = brewing.GetSwapById(1, 1).
+        //    int expected = 1;
+        //    brewing.AddSwap(1, swaps_here);
+        //    int actual = brewing.GetSwapById(1, 1).
 
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.AreEqual(expected, actual);
+        //}
 
         [TestMethod]
         public void BPRepositoryEnsureICanEditBeerOfferedName()

@@ -9,7 +9,7 @@ namespace Beerswap.Models
 {
     // Main class generating/coordinating EF functionality
     // Aka the data access class
-    public class BeerContext : DbContext
+    public class BeerContext : ApplicationDbContext
     {
         public virtual IDbSet<BeerPosting> BeerPostings { get; set; }
         public virtual IDbSet<Swap> Swaps { get; set; }

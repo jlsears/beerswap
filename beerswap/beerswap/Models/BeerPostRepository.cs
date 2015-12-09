@@ -12,7 +12,7 @@ namespace Beerswap.Models
     {
         private BeerContext context;
 
-        public IDbSet<ApplicationUser> Users { get; { return context.Users; } }
+        public IDbSet<ApplicationUser> Users { get { return context.Users; } }
 
         // Repository constructor
         public BeerPostRepository()
