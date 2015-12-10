@@ -6,7 +6,7 @@ using System.Data.Entity;
 using Beerswap.Models;
 using System.Collections.Generic;
 
-namespace beerswaptests.Models
+namespace Beerswaptests.Models
 {
     [TestClass]
     public class BeerPostRepositoryTests

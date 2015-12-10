@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace beerswap.Controllers
+namespace Beerswap.Controllers
 {
     public class PostingController : Controller
     {

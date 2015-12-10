@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Beerswap.Models;
 
-namespace beerswaptests.Models
+namespace Beerswaptests.Models
 {
     [TestClass]
     public class SwapTests
