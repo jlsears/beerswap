@@ -32,9 +32,9 @@ namespace Beerswap.Models
         // ************************
 
 
-        public BeerPosting CreatePosting(string beername, ApplicationUser owner)
+        public BeerPosting CreatePosting(ApplicationUser owner)
         {
-            BeerPosting drinkup = new BeerPosting { BeerName = beername, Owner = owner };
+            BeerPosting drinkup = new BeerPosting { Owner = owner };
             context.BeerPostings.Add(drinkup);
             context.SaveChanges();
 

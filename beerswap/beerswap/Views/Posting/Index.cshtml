@@ -3,18 +3,50 @@
     ViewBag.Title = "Beer Postings";
 }
 
-<h2>Beers Available for Swapping</h2>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">Title perhaps</div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4">Something here</div>
-        <div class="col-lg-4">And here</div>
-        <div class="col-lg-4">Also here</div>
-    </div>
-    <div class="row">
-        ...
+<div id="postingsHere" class="green container-fluid">
+    <div class="row" style="display:inline-flex;">
+        @foreach (var listing in Model)
+        {
+            <div class="beerposting-wrapper">
+                <div class="brellolist-header">@listing.BeerName</div>
+                <div class="brellolist-header">@listing.Quantity</div>
+                <div class="brellolist-header">@listing.Note</div>
+                <div class="beerposting">
+                    <ul class="center"></ul>
+                </div>
+                <div class="beerposting-footer"></div>
+            </div>
+        }
+        <div class="beerposting-wrapper">
+            <div id="list-modal" role="dialog" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        @using (Html.BeginForm("CreateBeerPosting", "BeerPosting", FormMethod.Post, new { id = "beerForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("post-id", ViewBag.CurrentPostingId as object)
+                            <div class="modal-header">Add New Beer Posting @ViewBag.CurrentBeerPostingdId</div>
+                            <div class="modal-body">Beer Name @Html.TextBox("beerposting-name")</div>
+                            <div class="modal-body">Quantity Available @Html.TextBox("beerposting-quantity")</div>
+                            <div class="modal-body">Note @Html.TextBox("beerposting-note")</div>
+                            <div class="modal-footer"><input class="btn" type="submit" value="Submit" /></div>
+                            <!--a href="javascript:document.getElementById('logoutForm').submit()">Log off</a-->
+                        }
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>
+        </div>
     </div>
 </div>
+
+
+
+
+
+
+@*@using (Html.BeginForm("Create", "BeerPosting", FormMethod.Post, htmlAttributes: new { style = "display:block;", @class = "mystyle"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBox("name")
+    }*@

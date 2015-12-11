@@ -41,6 +41,24 @@ namespace Beerswap.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult CreateBeerPosting(FormCollection form)
+        {
+            string list_name = form.Get("list-name");
+            string board_id = form.Get("beerposting-id");
+            string user_id = User.Identity.GetUserId();
+            ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+
+
+            hopCentral.CreatePosting(brewLover);
+
+
+            return RedirectToAction("Index");
+
+        }
+
+
         // GET: Posting/Create
         public ActionResult Create()
         {

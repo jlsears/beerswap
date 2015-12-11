@@ -108,18 +108,18 @@ namespace Beerswaptests.Models
 
         }
 
-        [TestMethod]
-        public void BPRepositoryEnsureICanDeleteABeerPosting()
-        {
-            ConnectMocksToDataSource();
+        //[TestMethod]
+        //public void BPRepositoryEnsureICanDeleteABeerPosting()
+        //{
+        //    ConnectMocksToDataSource();
 
-            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+        //    BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 
-            BeerPosting added_posting = brewing.CreatePosting("Swill", userA);
+        //    BeerPosting added_posting = brewing.CreatePosting("Swill", userA);
 
-            brewing.RemoveBeerPosting(added_posting);
-            Assert.AreEqual(0, brewing.GetBeerPostingCount());
-        }
+        //    brewing.RemoveBeerPosting(added_posting);
+        //    Assert.AreEqual(0, brewing.GetBeerPostingCount());
+        //}
 
         [TestMethod]
         public void BPRepositoryEnsureICanEditABeerPostingName()
