@@ -21,7 +21,7 @@
             <div id="list-modal" role="dialog" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        @using (Html.BeginForm("CreateBeerPosting", "BeerPosting", FormMethod.Post, new { id = "beerForm" }))
+                        @using (Html.BeginForm("CreateBeerPosting", "Posting", FormMethod.Post, new { id = "beerForm" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.Hidden("post-id", ViewBag.CurrentPostingId as object)

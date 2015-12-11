@@ -32,13 +32,13 @@ namespace Beerswap.Models
         // ************************
 
 
-        public BeerPosting CreatePosting(ApplicationUser owner)
+        public BeerPosting CreatePosting(ApplicationUser owner, BeerPosting _newbeerposting)
         {
-            BeerPosting drinkup = new BeerPosting { Owner = owner };
-            context.BeerPostings.Add(drinkup);
+            //BeerPosting drinkup = new BeerPosting { Owner = owner };
+            context.BeerPostings.Add(_newbeerposting);
             context.SaveChanges();
 
-            return drinkup;
+            return _newbeerposting;
         }
 
         public List<BeerPosting> GetBeerPostings(ApplicationUser specificUser)
