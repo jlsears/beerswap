@@ -46,13 +46,13 @@ namespace Beerswap.Controllers
         public ActionResult CreateBeerPosting(FormCollection form)
         {
             string beer_name = form.Get("beerposting-name");
-            string beer_qty = form.Get("beerposting-quantity").ToString();
+            int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
             string beer_note = form.Get("beerposting-note");
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
 
 
-            hopCentral.CreatePosting(brewLover, new BeerPosting { BeerName = beer_name, Note = beer_note });
+            hopCentral.CreatePosting(brewLover, new BeerPosting { BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
 
 
             return RedirectToAction("Index");
