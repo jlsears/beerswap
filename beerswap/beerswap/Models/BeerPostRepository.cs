@@ -64,6 +64,12 @@ namespace Beerswap.Models
             context.SaveChanges();
         }
 
+        public BeerPosting GetPostingById (int posting_id)
+        {
+            var query = from p in context.BeerPostings where p.BeerPostingID == posting_id select p;
+            return query.Single<BeerPosting>();
+        }
+
         public bool EditBeerPostingName(int _postId, string newName)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _postId select p;

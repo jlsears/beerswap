@@ -1,0 +1,74 @@
+﻿@model Beerswap.Models.Swap
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Swap</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BeerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SwapDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SwapDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeerPostingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeerPostingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AcceptSwap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcceptSwap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyWanted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyWanted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyOffered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyOffered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeerOffered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeerOffered)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SwapId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
