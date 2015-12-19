@@ -8,7 +8,7 @@
         @foreach (var listing in Model)
         {
             <div class="beerposting-wrapper">
-                <div id=@($"#swap-modal{listing.BeerPostingID}") + @listing.BeerPostingID role="dialog" class="modal fade">
+                <div id=@($"swap-modal{listing.BeerPostingID}") + @listing.BeerPostingID role="dialog" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             @using (Html.BeginForm("CreateSwapOffer", "Posting", FormMethod.Post, new { name = "NewSwap" + listing.BeerPostingID, id = "swapForm" + listing.BeerPostingID }))
