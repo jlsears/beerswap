@@ -64,13 +64,13 @@ namespace Beerswap.Models
             context.SaveChanges();
         }
 
-        public BeerPosting GetPostingById (int posting_id)
+        public BeerPosting GetPostingById (string posting_id)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == posting_id select p;
             return query.Single<BeerPosting>();
         }
 
-        public bool EditBeerPostingName(int _postId, string newName)
+        public bool EditBeerPostingName(string _postId, string newName)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _postId select p;
             BeerPosting found_post = null;
@@ -94,7 +94,7 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditBeerPostingQuantity(int _beerpostid, int _newquantity)
+        public bool EditBeerPostingQuantity(string _beerpostid, int _newquantity)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
             BeerPosting found_post = null;
@@ -117,7 +117,7 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditBeerPostingNote(int _beerpostid, string _newnote)
+        public bool EditBeerPostingNote(string _beerpostid, string _newnote)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
             BeerPosting found_post = null;
@@ -150,7 +150,7 @@ namespace Beerswap.Models
             return GetAllSwaps().Count;
         }
 
-        public bool AddSwap(int _beerpostid, Swap haveSwap)
+        public bool AddSwap(string _beerpostid, Swap haveSwap)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
             BeerPosting foundPosting = null;
@@ -178,7 +178,7 @@ namespace Beerswap.Models
             return query.SelectMany(beerposting => beerposting.Swaps).ToList();
         }
 
-        public Swap GetSwapById(int _beerpostid, int _swapid)
+        public Swap GetSwapById(string _beerpostid, int _swapid)
         {
             var query = from s in context.BeerPostings where s.BeerPostingID == _beerpostid select s;
             //return query.Select(beerposting => beerposting.Swaps).ToList();
@@ -195,7 +195,7 @@ namespace Beerswap.Models
             //return query.ToList();
         }
 
-        public bool EditBeerOfferedName(int _postid, Swap _swap, string _newName)
+        public bool EditBeerOfferedName(string _postid, Swap _swap, string _newName)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
             BeerPosting found_post = null;
@@ -218,7 +218,7 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditQtyOffered(int _postid, Swap _swap, int _qtyoffered)
+        public bool EditQtyOffered(string _postid, Swap _swap, int _qtyoffered)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
             BeerPosting found_post = null;
@@ -241,7 +241,7 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditSwapAcceptanceStatus(int _postid, Swap _swap, bool _swapacceptance)
+        public bool EditSwapAcceptanceStatus(string _postid, Swap _swap, bool _swapacceptance)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
             BeerPosting found_post = null;

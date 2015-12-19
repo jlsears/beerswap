@@ -9,7 +9,7 @@ namespace Beerswap.Models
     public class BeerPosting
     {
         [Key]
-        public int BeerPostingID { get; set; }
+        public string BeerPostingID { get; set; }
         public string BeerName { get; set; }
         public ApplicationUser Owner { get; set; }
         public int Quantity { get; set; }

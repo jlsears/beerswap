@@ -49,7 +49,7 @@ namespace Beerswap.Controllers
         {
             string beer_name = form.Get("beerposting-name");
             int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
-            //int beer_post_id = Convert.ToInt32(form.Get("post-id"));
+            string beer_post_id = form.Get("post-id");
             string beer_note = form.Get("beerposting-note");
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
@@ -74,7 +74,7 @@ namespace Beerswap.Controllers
             //BeerPosting current_posting = hopCentral.GetPostingById(Convert.ToInt32((beer_posting_id)));
             if (beer_posting_id != null)
             {
-                hopCentral.AddSwap(Convert.ToInt32(beer_posting_id), new Swap { BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
+                hopCentral.AddSwap(posting_id_string, new Swap { BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
             }
 
 

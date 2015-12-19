@@ -8,13 +8,13 @@
         @foreach (var listing in Model)
         {
             <div class="beerposting-wrapper">
-                <div id=@($"#swap-modal{listing.BeerPostingID}") + @listing.BeerPostingID role="dialog" class="modal fade">
+                <div id="swap-modal" role="dialog" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             @using (Html.BeginForm("CreateSwapOffer", "Posting", FormMethod.Post, new { name = "NewSwap" + listing.BeerPostingID, id = "swapForm" + listing.BeerPostingID }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.Hidden("post-id", listing.BeerPostingID as Object)
+                                @Html.Hidden("post-id", listing.BeerPostingID as string)
                                 @Html.Hidden("swap-id", ViewBag.CurrentSwapId as object)
                                 <div class="modal-header">Create New Swap Offer @ViewBag.CurrentPostId</div>
                                 <div class="modal-body">Beer Name @Html.TextBox("swap-beer-name")</div>
@@ -31,7 +31,7 @@
                 <div class="brellolist-header">@listing.Quantity</div>
                 <div class="brellolist-header">@listing.Note</div>
                 
-                <button class="btn btn-info" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}") >Propose Swap</button>
+                <button class="btn btn-info" data-toggle="modal" data-target="#swap-modal" >Propose Swap</button>
                 <div class="beerposting">
                     <ul class="center"></ul>
                 </div>

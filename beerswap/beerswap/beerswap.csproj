@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201512110224316_InitialCreate1.Designer.cs">
       <DependentUpon>201512110224316_InitialCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512190509546_IdString.cs" />
+    <Compile Include="Migrations\201512190509546_IdString.Designer.cs">
+      <DependentUpon>201512190509546_IdString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BeerContext.cs" />
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512110224316_InitialCreate1.resx">
       <DependentUpon>201512110224316_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512190509546_IdString.resx">
+      <DependentUpon>201512190509546_IdString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
