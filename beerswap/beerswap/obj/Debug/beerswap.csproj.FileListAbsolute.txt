@@ -75,4 +75,3 @@ C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\De
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csproj.GenerateResource.Cache
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.dll
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.pdb
-C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csprojResolveAssemblyReference.cache

@@ -37,6 +37,17 @@ namespace Beerswap.Controllers
             return View(whatsAvailable);
         }
 
+        public ActionResult SwapView()
+        {
+            string user_id = User.Identity.GetUserId();
+            ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+
+            List<Swap> theirSwaps = hopCentral.GetSwapsForUser(brewLover);
+            return View(theirSwaps);
+
+        }
+
+
         // GET: Posting/Details/5
         public ActionResult Details(int id)
         {
@@ -77,9 +88,9 @@ namespace Beerswap.Controllers
                 hopCentral.AddSwap(beer_posting_id, new Swap { BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
             }
 
-
-
-            return RedirectToAction("Index", "Swap");
+            return RedirectToAction("SwapView");
+            
+            //return RedirectToAction("Index", "Swap"); (If from another folder)
         }
 
 
