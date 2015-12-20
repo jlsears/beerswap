@@ -41,6 +41,7 @@ namespace Beerswap.Controllers
         {
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+            Swap propose_swap = hopCentral.CreateSwap(brewLover);
 
             List<Swap> theirSwaps = hopCentral.GetSwapsForUser(brewLover);
             return View(theirSwaps);

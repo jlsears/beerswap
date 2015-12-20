@@ -150,6 +150,15 @@ namespace Beerswap.Models
             return GetAllSwaps().Count;
         }
 
+        public Swap CreateSwap(ApplicationUser _specificUser)
+        {
+            Swap make_swap = new Swap { OfferUser = _specificUser };
+            context.Swaps.Add(make_swap);
+            context.SaveChanges();
+
+            return make_swap;
+        }
+
         public bool AddSwap(int _beerpostid, Swap haveSwap)
         {
             var query = from p in context.BeerPostings where p.BeerPostingID == _beerpostid select p;
