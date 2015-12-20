@@ -31,12 +31,12 @@ namespace Beerswaptests.Models
 
             var swap_data = my_swapoffers.AsQueryable();
 
-            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.Provider).Returns(swap_data.Provider);
-            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.GetEnumerator()).Returns(swap_data.GetEnumerator);
-            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.ElementType).Returns(swap_data.ElementType);
-            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.Expression).Returns(swap_data.Expression);
+            mock_swapoffers.As<IQueryable<Swap>>().Setup(m => m.Provider).Returns(swap_data.Provider);
+            mock_swapoffers.As<IQueryable<Swap>>().Setup(m => m.GetEnumerator()).Returns(swap_data.GetEnumerator);
+            mock_swapoffers.As<IQueryable<Swap>>().Setup(m => m.ElementType).Returns(swap_data.ElementType);
+            mock_swapoffers.As<IQueryable<Swap>>().Setup(m => m.Expression).Returns(swap_data.Expression);
 
-            mock_context.Setup(m => m.BeerPostings).Returns(mock_beerpostings.Object);
+            mock_context.Setup(m => m.Swaps).Returns(mock_swapoffers.Object);
         }
 
         [TestInitialize]
@@ -85,6 +85,10 @@ namespace Beerswaptests.Models
             BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 
             List<BeerPosting> getbeers = brewing.GetBeerPostings(userA);
+
+            int expected = 2;
+            //int actual = getbeers;
+            Assert.AreEqual(expected, getbeers.Count());
         }
 
         [TestMethod]
@@ -226,8 +230,6 @@ namespace Beerswaptests.Models
         [TestMethod]
         public void BPRepositoryEnsureICanGetSwapsByUser()
         {
-            var swaps_here = new List<Swap> { new Swap { BeerName = "Good Beer", SwapId = 1 } };
-
             my_swapoffers.Add(new Swap { BeerName = "Something sour", QtyOffered = 5, OfferUser = userA });
             my_swapoffers.Add(new Swap { BeerName = "Something lemony", QtyOffered = 3, OfferUser = userB });
 
@@ -235,9 +237,9 @@ namespace Beerswaptests.Models
             BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 
             int expected = 1;
-            int actual = brewing.GetSwapsForUser(userA).Count;
+            List<Swap> actual_swaps = brewing.GetSwapsForUser(userA);
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual_swaps.Count());
         }
 
         //[TestMethod]
