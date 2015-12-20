@@ -178,6 +178,12 @@ namespace Beerswap.Models
             return query.SelectMany(beerposting => beerposting.Swaps).ToList();
         }
 
+        public List<Swap> GetSwapsForUser(ApplicationUser specificUser)
+        {
+            var query = from s in context.Swaps where s.OfferUser == specificUser select s;
+            return query.ToList<Swap>(); // Same as query.ToList();
+        }
+
         public Swap GetSwapById(int _beerpostid, int _swapid)
         {
             var query = from s in context.BeerPostings where s.BeerPostingID == _beerpostid select s;

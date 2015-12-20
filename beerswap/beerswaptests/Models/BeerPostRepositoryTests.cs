@@ -13,7 +13,9 @@ namespace Beerswaptests.Models
     {
         private Mock<BeerContext> mock_context;
         private Mock<DbSet<BeerPosting>> mock_beerpostings;
+        private Mock<DbSet<Swap>> mock_swapoffers;
         private List<BeerPosting> my_beerpostings;
+        private List<Swap> my_swapoffers;
         private ApplicationUser owner, userA, userB;
 
         private void ConnectMocksToDataSource()
@@ -26,6 +28,15 @@ namespace Beerswaptests.Models
             mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.Expression).Returns(data.Expression);
 
             mock_context.Setup(m => m.BeerPostings).Returns(mock_beerpostings.Object);
+
+            var swap_data = my_swapoffers.AsQueryable();
+
+            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.Provider).Returns(swap_data.Provider);
+            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.GetEnumerator()).Returns(swap_data.GetEnumerator);
+            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.ElementType).Returns(swap_data.ElementType);
+            mock_swapoffers.As<IQueryable<BeerPosting>>().Setup(m => m.Expression).Returns(swap_data.Expression);
+
+            mock_context.Setup(m => m.BeerPostings).Returns(mock_beerpostings.Object);
         }
 
         [TestInitialize]
@@ -34,7 +45,9 @@ namespace Beerswaptests.Models
         {
             mock_context = new Mock<BeerContext>();
             mock_beerpostings = new Mock<DbSet<BeerPosting>>();
+            mock_swapoffers = new Mock<DbSet<Swap>>();
             my_beerpostings = new List<BeerPosting>();
+            my_swapoffers = new List<Swap>();
             owner = new ApplicationUser();
             userA = new ApplicationUser();
             userB = new ApplicationUser();
@@ -46,7 +59,9 @@ namespace Beerswaptests.Models
         {
             mock_context = null;
             mock_beerpostings = null;
+            mock_swapoffers = null;
             my_beerpostings = null;
+            my_swapoffers = null;
         }
 
         [TestMethod]
@@ -204,6 +219,23 @@ namespace Beerswaptests.Models
 
             int expected = 2;
             int actual = brewing.GetAllSwaps().Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void BPRepositoryEnsureICanGetSwapsByUser()
+        {
+            var swaps_here = new List<Swap> { new Swap { BeerName = "Good Beer", SwapId = 1 } };
+
+            my_swapoffers.Add(new Swap { BeerName = "Something sour", QtyOffered = 5, OfferUser = userA });
+            my_swapoffers.Add(new Swap { BeerName = "Something lemony", QtyOffered = 3, OfferUser = userB });
+
+            ConnectMocksToDataSource();
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            int expected = 1;
+            int actual = brewing.GetSwapsForUser(userA).Count;
 
             Assert.AreEqual(expected, actual);
         }
