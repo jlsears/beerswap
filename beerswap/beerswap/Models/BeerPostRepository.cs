@@ -189,7 +189,7 @@ namespace Beerswap.Models
 
         public List<Swap> GetSwapsForUser(ApplicationUser specificUser)
         {
-            var query = from s in context.Swaps where s.OfferUser == specificUser select s;
+            var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id select s;
             return query.ToList<Swap>(); // Same as query.ToList();
         }
 

@@ -262,7 +262,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Posting\Index.cshtml" />
-    <Content Include="Views\Swap\Index.cshtml" />
+    <Content Include="Views\Swap\SwapView.cshtml" />
+    <Content Include="Views\Posting\SwapView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

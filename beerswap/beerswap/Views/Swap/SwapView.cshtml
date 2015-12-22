@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Beerswap.Models.Swap>
+@{
+    ViewBag.Title = "Swaps";
+}
+
+<div id="swapList" class="green container-fluid">
+    <div class="row" style="display:inline-flex;">
+        @foreach (var swapping in Model)
+        {
+            <div class="swap-wrapper">
+                <div class="brellolist-header">@swapping.BeerPostingID</div>
+                <div class="brellolist-header">@swapping.BeerName</div>
+                <div class="brellolist-header">@swapping.BeerOffered</div>
+                <div class="brellolist-header">@swapping.OfferUser</div>
+                <div class="brellolist-header">@swapping.QtyOffered</div>
+                <div class="brellolist-header">@swapping.QtyWanted</div>
+                <div class="brellolist-header">@swapping.SwapDate</div>
+                <div class="brellolist-header">@swapping.AcceptSwap</div>
+                <div class="swaps">
+                    <ul class="center"></ul>
+                </div>
+                <div class="swap-footer"></div>
+            </div>
+        }
+    </div>
+</div>
