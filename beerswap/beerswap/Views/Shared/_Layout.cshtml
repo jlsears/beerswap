@@ -27,6 +27,10 @@
                     {
                         <li>@Html.ActionLink("Beer Postings", "Index", "Posting")</li>
                     }
+                    @if(Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Swap History", "SwapView", "Posting")</li>
+                    }
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

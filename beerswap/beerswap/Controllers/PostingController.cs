@@ -31,8 +31,6 @@ namespace Beerswap.Controllers
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
 
-            //ViewBag.CurrentPostId = my_board.PostingId;
-
             List<BeerPosting> whatsAvailable = hopCentral.GetAllPostings();
             return View(whatsAvailable);
         }
@@ -41,7 +39,6 @@ namespace Beerswap.Controllers
         {
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
-            //Swap propose_swap = hopCentral.CreateSwap(brewLover);
 
             List<Swap> theirSwaps = hopCentral.GetSwapsForUser(brewLover);
             return View(theirSwaps);
@@ -61,7 +58,6 @@ namespace Beerswap.Controllers
         {
             string beer_name = form.Get("beerposting-name");
             int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
-            //int beer_post_id = Convert.ToInt32(form.Get("post-id"));
             string beer_note = form.Get("beerposting-note");
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
@@ -83,15 +79,12 @@ namespace Beerswap.Controllers
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
 
-            //BeerPosting current_posting = hopCentral.GetPostingById(Convert.ToInt32((beer_posting_id)));
             if (posting_id_string != null)
             {
                 hopCentral.AddSwap( beer_posting_id, new Swap { OfferUser = brewLover, BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
             }
 
             return RedirectToAction("SwapView");
-            
-            //return RedirectToAction("Index", "Swap"); (If from another folder)
         }
 
 
