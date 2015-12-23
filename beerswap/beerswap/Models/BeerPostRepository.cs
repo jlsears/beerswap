@@ -190,7 +190,10 @@ namespace Beerswap.Models
         public List<Swap> GetSwapsForUser(ApplicationUser specificUser)
         {
             var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id select s;
-            return query.ToList<Swap>(); // Same as query.ToList();
+            // New code to implement "or user is beer posting owner" here
+            //  var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id || s.Owner.Id == specificUser.Id select s;
+
+            return query.ToList<Swap>();
         }
 
         public Swap GetSwapById(int _beerpostid, int _swapid)
