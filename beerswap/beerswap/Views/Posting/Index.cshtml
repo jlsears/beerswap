@@ -15,6 +15,8 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.Hidden("post-id", listing.BeerPostingID as Object)
+                                //@Html.Hidden("posting-user-id", listing.Owner.Id as Object)
+  
                                 @Html.Hidden("swap-id", ViewBag.CurrentSwapId as object)
                                 <div class="modal-header">Create New Swap Offer @ViewBag.CurrentPostId</div>
                                 <div class="modal-body">Beer Name @Html.TextBox("swap-beer-name")</div>
@@ -26,6 +28,10 @@
                         </div>
                     </div>
                 </div>
+                @if (listing.Owner == null)
+                {
+                @Html.TextBox("listing.Owner", "no new user")
+                }
                 <div>@listing.BeerPostingID</div>
                 <div class="brellolist-header">@listing.BeerName</div>
                 <div class="brellolist-header">@listing.Quantity</div>

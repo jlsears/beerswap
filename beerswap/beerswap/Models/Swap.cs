@@ -11,9 +11,7 @@ namespace Beerswap.Models
         [Key]
         public int SwapId { get; set; }
         public ApplicationUser OfferUser { get; set; }
-        // Adding property to acoomodate querying for current user
-        // in either of these roles in swap view rendering
-        // public ApplicationUser Owner { get; set; }
+        public ApplicationUser Owner { get; set; }
         public string BeerName { get; set; }
         public DateTime SwapDate { get; set; }
         public int BeerPostingID { get; set; }

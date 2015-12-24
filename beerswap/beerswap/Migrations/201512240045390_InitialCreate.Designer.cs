@@ -13,7 +13,7 @@ namespace beerswap.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512090325154_InitialCreate"; }
+            get { return "201512240045390_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -92,12 +92,15 @@ namespace beerswap.Migrations
                         QtyOffered = c.Int(nullable: false),
                         BeerOffered = c.String(),
                         OfferUser_Id = c.String(maxLength: 128),
+                        Owner_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.SwapId)
                 .ForeignKey("dbo.AspNetUsers", t => t.OfferUser_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Owner_Id)
                 .ForeignKey("dbo.BeerPostings", t => t.BeerPostingID, cascadeDelete: true)
                 .Index(t => t.BeerPostingID)
-                .Index(t => t.OfferUser_Id);
+                .Index(t => t.OfferUser_Id)
+                .Index(t => t.Owner_Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -115,12 +118,14 @@ namespace beerswap.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Swaps", "BeerPostingID", "dbo.BeerPostings");
+            DropForeignKey("dbo.Swaps", "Owner_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Swaps", "OfferUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.BeerPostings", "Owner_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Swaps", new[] { "Owner_Id" });
             DropIndex("dbo.Swaps", new[] { "OfferUser_Id" });
             DropIndex("dbo.Swaps", new[] { "BeerPostingID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
