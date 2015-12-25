@@ -56,6 +56,9 @@ namespace Beerswap.Controllers
         [HttpPost]
         public ActionResult CreateBeerPosting(FormCollection form)
         {
+            UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //ApplicationUser brewLover = manager.FindById(User.Identity.GetUserId());
+
             string beer_name = form.Get("beerposting-name");
             int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
             string beer_note = form.Get("beerposting-note");

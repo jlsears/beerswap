@@ -32,6 +32,10 @@
                 {
                 @Html.TextBox("listing.Owner", "no new user")
                 }
+                @if (listing.Owner != null) 
+                {
+                    <div class="brellolist-header">@listing.Owner</div>
+                }
                 <div>@listing.BeerPostingID</div>
                 <div class="brellolist-header">@listing.BeerName</div>
                 <div class="brellolist-header">@listing.Quantity</div>
