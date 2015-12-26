@@ -10,8 +10,8 @@ namespace Beerswap.Models
     {
         [Key]
         public int SwapId { get; set; }
-        public ApplicationUser OfferUser { get; set; }
-        public ApplicationUser Owner { get; set; }
+        public string OfferUserId { get; set; }
+        public string OwnerId { get; set; }
         public string BeerName { get; set; }
         public DateTime SwapDate { get; set; }
         public int BeerPostingID { get; set; }

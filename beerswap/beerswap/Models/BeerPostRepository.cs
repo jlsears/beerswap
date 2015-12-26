@@ -150,9 +150,9 @@ namespace Beerswap.Models
             return GetAllSwaps().Count;
         }
 
-        public Swap CreateSwap(ApplicationUser _specificUser)
+        public Swap CreateSwap(string _specificUser)
         {
-            Swap make_swap = new Swap { OfferUser = _specificUser };
+            Swap make_swap = new Swap { OfferUserId = _specificUser };
             context.Swaps.Add(make_swap);
             context.SaveChanges();
 
@@ -191,7 +191,7 @@ namespace Beerswap.Models
         {
             // var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id select s;
             // New code to implement "or user is beer posting owner" here
-            var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id || s.Owner.Id == specificUser.Id select s;
+            var query = from s in context.Swaps where s.OfferUserId == specificUser.Id || s.OwnerId == specificUser.Id select s;
 
             return query.ToList<Swap>();
         }

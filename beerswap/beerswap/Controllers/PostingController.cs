@@ -64,8 +64,9 @@ namespace Beerswap.Controllers
             string beer_note = form.Get("beerposting-note");
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+            string brewLoverId = brewLover.Id;
 
-            hopCentral.CreatePosting(brewLover, new BeerPosting { OwnerId = brewLover.Id, BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
+            hopCentral.CreatePosting(brewLover, new BeerPosting { OwnerId = brewLoverId, BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
 
             return RedirectToAction("Index");
 
@@ -77,16 +78,17 @@ namespace Beerswap.Controllers
             string beer_name_offered = form.Get("swap-beer-name");
             string posting_id_string = form.Get("post-id");
             int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
-            string posting_user_id = form.Get("postuser-id");
-            ApplicationUser posting_user = hopCentral.Users.FirstOrDefault(u => u.Id == posting_user_id);
+            string posting_user = form.Get("posting-user-id");
+            //ApplicationUser posting_user = hopCentral.Users.FirstOrDefault(u => u.Id == posting_user_id);
             int beer_qty_offered = Convert.ToInt32(form.Get("swap-quantity-offered"));
             int beer_qty_wanted = Convert.ToInt32(form.Get("swap-quantity-wanted"));
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+            string brewLoverId = brewLover.Id;
 
             if (posting_id_string != null)
             {
-                hopCentral.AddSwap( beer_posting_id, new Swap { Owner = posting_user, OfferUser = brewLover, BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
+                hopCentral.AddSwap( beer_posting_id, new Swap { OwnerId = posting_user, OfferUserId = brewLoverId, BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
             }
 
             return RedirectToAction("SwapView");
