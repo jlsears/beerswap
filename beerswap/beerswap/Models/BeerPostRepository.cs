@@ -43,7 +43,7 @@ namespace Beerswap.Models
 
         public List<BeerPosting> GetBeerPostings(ApplicationUser specificUser)
         {
-            var query = from b in context.BeerPostings where b.Owner == specificUser select b;
+            var query = from b in context.BeerPostings where b.OwnerId == specificUser.Id select b;
             return query.ToList<BeerPosting>();
         }
 

@@ -65,7 +65,7 @@ namespace Beerswap.Controllers
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
 
-            hopCentral.CreatePosting(brewLover, new BeerPosting { Owner = brewLover, BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
+            hopCentral.CreatePosting(brewLover, new BeerPosting { OwnerId = brewLover.Id, BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
 
             return RedirectToAction("Index");
 

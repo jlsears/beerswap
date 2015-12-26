@@ -28,13 +28,13 @@
                         </div>
                     </div>
                 </div>
-                @if (listing.Owner == null)
+                @if (listing.OwnerId == null)
                 {
                 @Html.TextBox("listing.Owner", "no new user")
                 }
-                @if (listing.Owner != null) 
+                @if (listing.OwnerId != null) 
                 {
-                    <div class="brellolist-header">@listing.Owner</div>
+                    <div class="brellolist-header">@listing.OwnerId</div>
                 }
                 <div>@listing.BeerPostingID</div>
                 <div class="brellolist-header">@listing.BeerName</div>

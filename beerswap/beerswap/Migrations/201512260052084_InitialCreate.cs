@@ -13,12 +13,33 @@ namespace beerswap.Migrations
                     {
                         BeerPostingID = c.Int(nullable: false, identity: true),
                         BeerName = c.String(),
+                        OwnerId = c.String(),
                         Quantity = c.Int(nullable: false),
                         Note = c.String(),
+                    })
+                .PrimaryKey(t => t.BeerPostingID);
+            
+            CreateTable(
+                "dbo.Swaps",
+                c => new
+                    {
+                        SwapId = c.Int(nullable: false, identity: true),
+                        BeerName = c.String(),
+                        SwapDate = c.DateTime(nullable: false),
+                        BeerPostingID = c.Int(nullable: false),
+                        AcceptSwap = c.Boolean(nullable: false),
+                        QtyWanted = c.Int(nullable: false),
+                        QtyOffered = c.Int(nullable: false),
+                        BeerOffered = c.String(),
+                        OfferUser_Id = c.String(maxLength: 128),
                         Owner_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.BeerPostingID)
+                .PrimaryKey(t => t.SwapId)
+                .ForeignKey("dbo.AspNetUsers", t => t.OfferUser_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Owner_Id)
+                .ForeignKey("dbo.BeerPostings", t => t.BeerPostingID, cascadeDelete: true)
+                .Index(t => t.BeerPostingID)
+                .Index(t => t.OfferUser_Id)
                 .Index(t => t.Owner_Id);
             
             CreateTable(
@@ -80,29 +101,6 @@ namespace beerswap.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Swaps",
-                c => new
-                    {
-                        SwapId = c.Int(nullable: false, identity: true),
-                        BeerName = c.String(),
-                        SwapDate = c.DateTime(nullable: false),
-                        BeerPostingID = c.Int(nullable: false),
-                        AcceptSwap = c.Boolean(nullable: false),
-                        QtyWanted = c.Int(nullable: false),
-                        QtyOffered = c.Int(nullable: false),
-                        BeerOffered = c.String(),
-                        OfferUser_Id = c.String(maxLength: 128),
-                        Owner_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.SwapId)
-                .ForeignKey("dbo.AspNetUsers", t => t.OfferUser_Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Owner_Id)
-                .ForeignKey("dbo.BeerPostings", t => t.BeerPostingID, cascadeDelete: true)
-                .Index(t => t.BeerPostingID)
-                .Index(t => t.OfferUser_Id)
-                .Index(t => t.Owner_Id);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -120,26 +118,24 @@ namespace beerswap.Migrations
             DropForeignKey("dbo.Swaps", "BeerPostingID", "dbo.BeerPostings");
             DropForeignKey("dbo.Swaps", "Owner_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Swaps", "OfferUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.BeerPostings", "Owner_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Swaps", new[] { "Owner_Id" });
-            DropIndex("dbo.Swaps", new[] { "OfferUser_Id" });
-            DropIndex("dbo.Swaps", new[] { "BeerPostingID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.BeerPostings", new[] { "Owner_Id" });
+            DropIndex("dbo.Swaps", new[] { "Owner_Id" });
+            DropIndex("dbo.Swaps", new[] { "OfferUser_Id" });
+            DropIndex("dbo.Swaps", new[] { "BeerPostingID" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Swaps");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Swaps");
             DropTable("dbo.BeerPostings");
         }
     }
