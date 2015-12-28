@@ -41,11 +41,13 @@
                 <div class="brellolist-header">@listing.BeerName</div>
                 <div class="brellolist-header">@listing.Quantity</div>
                 <div class="brellolist-header">@listing.Note</div>
-                <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-popover-content="#postingPopover"> popover</a>
+                <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-popover-content="#postingPopover"> popover</a>
                 <div id="postingPopover" class="hide">
                     <ul>
-                        <li>Item1</li>
-                        <li>Item2</li>
+                        <li><a>Delete</a></li>
+                        <li>Edit</li>
+                        <li>Propose Swap</li>
+
                     </ul>
                 </div>
                 <button class="btn btn-info" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}") >Propose Swap</button>

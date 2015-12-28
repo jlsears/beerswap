@@ -69,7 +69,13 @@ namespace Beerswap.Controllers
             hopCentral.CreatePosting(brewLover, new BeerPosting { OwnerId = brewLoverId, BeerName = beer_name, Quantity = beer_qty, Note = beer_note });
 
             return RedirectToAction("Index");
+        }
 
+        [HttpGet]
+        public ActionResult DeleteBeerPosting(BeerPosting _specificPosting)
+        {
+            hopCentral.RemoveBeerPosting(_specificPosting);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
