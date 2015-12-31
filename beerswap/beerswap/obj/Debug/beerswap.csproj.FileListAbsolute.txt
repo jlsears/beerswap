@@ -70,8 +70,8 @@ C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\bin\Mi
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.dll
-C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.pdb
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csprojResolveAssemblyReference.cache
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.Migrations.InitialCreate.resources
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csproj.GenerateResource.Cache
+C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.dll
+C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.pdb
