@@ -23,8 +23,8 @@
                                 @Html.AntiForgeryToken()
                                 @Html.Hidden("post-id", ViewBag.CurrentPostingId as object)
                                 <div class="modal-body">Beer Name @Html.TextBox("beerposting-name", @listing.BeerName) </div>
-                                <div class="modal-body">Quantity Available @Html.TextBox("beerposting-quantity")</div>
-                                <div class="modal-body">Note @Html.TextBox("beerposting-note")</div>
+                                <div class="modal-body">Quantity Available @Html.TextBox("beerposting-quantity", @listing.Quantity)</div>
+                                <div class="modal-body">Note @Html.TextBox("beerposting-note", @listing.Note)</div>
                                 <div class="modal-footer"><input class="btn" type="submit" value="Submit" /></div>
                             }
                         </div>
