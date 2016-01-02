@@ -93,7 +93,7 @@ namespace Beerswap.Controllers
 
             hopCentral.EditBeerPosting(beer_posting_id, beer_name, beer_qty, beer_note);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("PostHistoryView");
         }
 
 

@@ -1,16 +1,39 @@
-﻿
+﻿@model IEnumerable<Beerswap.Models.BeerPosting>
 @{
     ViewBag.Title = "PostHistoryView";
 }
 
 <div id="PostHistoryList" class="green container-fluid">
     <div class="row" style="display:inline-flex;">
-        @foreach (var posting in Model)
+        @foreach (var postHist in Model)
         {
+            <div class="beerposting-wrapper">
+
+                <!--Beer Posting Editing Form-->
+
+                <div id=@($"editing-modal{postHist.BeerPostingID}") role="dialog" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            @using (Html.BeginForm("UpdateBeerPosting", "Posting", FormMethod.Post, new { id = "editForm" + postHist.BeerPostingID }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <!--@Html.Hidden("post-id", ViewBag.CurrentPostingId as object)-->
+                                @Html.Hidden("post-id", postHist.BeerPostingID as Object)
+                                <div class="modal-body">Beer Name @Html.TextBox("beerposting-name", @postHist.BeerName) </div>
+                                <div class="modal-body">Quantity Available @Html.TextBox("beerposting-quantity", postHist.Quantity)</div>
+                                <div class="modal-body">Note @Html.TextBox("beerposting-note", postHist.Note)</div>
+                                <div class="modal-footer"><input class="btn" type="submit" value="Submit" /></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="posts-wrapper">
-                <div class="brellolist-header">@posting.BeerName</div>
-                <div class="brellolist-header">@posting.Quantity</div>
-                <div class="brellolist-header">@posting.Note</div>
+                <div class="brellolist-header">@postHist.BeerName</div>
+                <div class="brellolist-header">@postHist.Quantity</div>
+                <div class="brellolist-header">@postHist.Note</div>
+                <button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button>
                 <div class="posts">
                     <ul class="center"></ul>
                 </div>
