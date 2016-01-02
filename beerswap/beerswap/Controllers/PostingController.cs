@@ -75,26 +75,16 @@ namespace Beerswap.Controllers
         public ActionResult UpdateBeerPosting(FormCollection form)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //ApplicationUser brewLover = manager.FindById(User.Identity.GetUserId());
 
-            string beer_posting_id = form.Get("post-id");
-
-            int beer_posting_string = Convert.ToInt32(beer_posting_id);
+            int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
             string beer_name = form.Get("beerposting-name");
-
-            string beer_qty_string = form.Get("beerposting-quantity");
-
-            int beer_qty = Convert.ToInt32(beer_qty_string);
+            int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
             string beer_note = form.Get("beerposting-note");
-            //string user_id = User.Identity.GetUserId();
-            //ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
-            //string brewLoverId = brewLover.Id;
 
-            hopCentral.EditBeerPosting(beer_posting_string, beer_name, beer_qty, beer_note);
+            hopCentral.EditBeerPosting(beer_posting_id, beer_name, beer_qty, beer_note);
 
             return RedirectToAction("Index");
         }
-
 
 
         [HttpGet]
