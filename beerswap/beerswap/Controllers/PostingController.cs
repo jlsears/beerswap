@@ -45,6 +45,16 @@ namespace Beerswap.Controllers
 
         }
 
+        public ActionResult PostHistoryView()
+        {
+            string user_id = User.Identity.GetUserId();
+            ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+
+            List<BeerPosting> theirPostHistory = hopCentral.GetBeerPostings(brewLover);
+            return View(theirPostHistory);
+
+        }
+
 
         // GET: Posting/Details/5
         public ActionResult Details(int id)

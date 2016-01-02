@@ -28,6 +28,10 @@
                     {
                         <li>@Html.ActionLink("Beer Postings", "Index", "Posting")</li>
                     }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Posting History", "PostHistoryView", "Posting")</li>
+                    }
                     @if(Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Swap History", "SwapView", "Posting")</li>

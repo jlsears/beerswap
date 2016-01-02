@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "PostHistoryView";
+}
+
+<div id="PostHistoryList" class="green container-fluid">
+    <div class="row" style="display:inline-flex;">
+        @foreach (var posting in Model)
+        {
+            <div class="posts-wrapper">
+                <div class="brellolist-header">@posting.BeerName</div>
+                <div class="brellolist-header">@posting.Quantity</div>
+                <div class="brellolist-header">@posting.Note</div>
+                <div class="posts">
+                    <ul class="center"></ul>
+                </div>
+                <div class="post-footer"></div>
+            </div>
+        }
+    </div>
+</div>
+
