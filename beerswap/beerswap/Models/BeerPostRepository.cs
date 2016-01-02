@@ -286,16 +286,16 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditSwapAcceptanceStatus(int _postid, Swap _swap, bool _swapacceptance)
+        public bool EditSwapAcceptanceStatus(int _postid)
         {
-            var query = from p in context.BeerPostings where p.BeerPostingID == _postid select p;
-            BeerPosting found_post = null;
+            var query = from p in context.Swaps where p.BeerPostingID == _postid select p;
+            Swap found_swap = null;
             bool result = true;
 
             try
             {
-                found_post = query.Single<BeerPosting>();
-                _swap.AcceptSwap = _swapacceptance;
+                found_swap = query.Single<Swap>();
+                found_swap.AcceptSwap = true;
                 context.SaveChanges();
             }
             catch (InvalidOperationException)

@@ -51,6 +51,7 @@
 //            owner = new ApplicationUser();
 //            userA = new ApplicationUser();
 //            userB = new ApplicationUser();
+            
 //        }
 
 //        [TestCleanup]
@@ -94,7 +95,7 @@
 //        [TestMethod]
 //        public void BPRepositoryEnsureICanGetAllBeerPostings()
 //        {
-//            my_beerpostings.Add(new BeerPosting { BeerName = "Something sour", Quantity = 5 , Owner = userA});
+//            my_beerpostings.Add(new BeerPosting { BeerName = "Something sour", Quantity = 5, Owner = userA });
 //            my_beerpostings.Add(new BeerPosting { BeerName = "Something lemon", Quantity = 3, Owner = userB });
 
 //            ConnectMocksToDataSource();
@@ -163,7 +164,7 @@
 //            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 //            ConnectMocksToDataSource();
 
-//            BeerPosting added_posting =new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Quantity = 5 };
+//            BeerPosting added_posting = new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Quantity = 5 };
 //            my_beerpostings.Add(added_posting);
 
 //            bool editing = brewing.EditBeerPostingQuantity(1, 3);
@@ -214,7 +215,7 @@
 //        [TestMethod]
 //        public void BPRepositoryEnsureICanGetAllSwaps()
 //        {
-//            var swaps_here = new List<Swap> { new Swap { BeerName = "Good Beer", SwapId = 1} };
+//            var swaps_here = new List<Swap> { new Swap { BeerName = "Good Beer", SwapId = 1 } };
 
 //            my_beerpostings.Add(new BeerPosting { BeerName = "pale ale", Owner = userA, BeerPostingID = 1, Swaps = swaps_here });
 //            my_beerpostings.Add(new BeerPosting { BeerName = "amber", Owner = userB, BeerPostingID = 2, Swaps = swaps_here });
@@ -265,7 +266,7 @@
 //        {
 //            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 //            Swap swapping = new Swap { SwapId = 1, BeerOffered = "generic beer" };
-//            my_beerpostings.Add( new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+//            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
 
 //            ConnectMocksToDataSource();
 //            bool nameChange = brewing.AddSwap(1, swapping);
@@ -301,12 +302,12 @@
 //        {
 //            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
 //            Swap swapping = new Swap { SwapId = 1, AcceptSwap = false };
-//            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", Owner = userA });
+//            my_beerpostings.Add(new BeerPosting { BeerPostingID = 1, BeerName = "Swill", OwnerId = userA });
 
 //            ConnectMocksToDataSource();
 //            bool adding = brewing.AddSwap(1, swapping);
 
-//            brewing.EditSwapAcceptanceStatus(1, swapping, true);
+//            brewing.EditSwapAcceptanceStatus(1);
 
 //            bool actual = true;
 
@@ -340,5 +341,5 @@
 //            Assert.AreEqual(1, brewing.GetSwapCount());
 //        }
 //    }
-//    }
+//}
 

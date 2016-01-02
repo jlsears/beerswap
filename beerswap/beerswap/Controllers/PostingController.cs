@@ -96,6 +96,21 @@ namespace Beerswap.Controllers
             return RedirectToAction("PostHistoryView");
         }
 
+        [HttpPost]
+        public ActionResult AcceptSwapOffer(FormCollection form)
+        {
+            UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
+            //string beer_name = form.Get("beerposting-name");
+            //int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
+            //string beer_note = form.Get("beerposting-note");
+
+            hopCentral.EditSwapAcceptanceStatus(beer_posting_id);
+
+            return RedirectToAction("SwapView");
+        }
+
 
         [HttpGet]
         public ActionResult DeleteBeerPosting(BeerPosting _specificPosting)
