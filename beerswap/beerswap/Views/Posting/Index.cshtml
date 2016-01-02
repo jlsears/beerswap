@@ -18,10 +18,11 @@
                 <div id=@($"editing-modal{listing.BeerPostingID}") role="dialog" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            @using (Html.BeginForm("CreateBeerPosting", "Posting", FormMethod.Post, new { id = "beerForm" }))
+                            @using (Html.BeginForm("UpdateBeerPosting", "Posting", FormMethod.Post, new { id = "editForm" + listing.BeerPostingID }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.Hidden("post-id", ViewBag.CurrentPostingId as object)
+                                <!--@Html.Hidden("post-id", ViewBag.CurrentPostingId as object)-->
+                                @Html.Hidden("post-id", listing.BeerPostingID as Object)
                                 <div class="modal-body">Beer Name @Html.TextBox("beerposting-name", @listing.BeerName) </div>
                                 <div class="modal-body">Quantity Available @Html.TextBox("beerposting-quantity", @listing.Quantity)</div>
                                 <div class="modal-body">Note @Html.TextBox("beerposting-note", @listing.Note)</div>
@@ -30,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>
+                <!--<button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>-->
             </div>
             <div class="beerposting-wrapper">
 
