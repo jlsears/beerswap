@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.home-pic {
+    background-image: url(../images/beer_on_barrel.jpg);
+    background-size: cover;
+    color: white;
+}
