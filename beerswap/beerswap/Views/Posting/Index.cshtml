@@ -4,8 +4,15 @@
 }
 
 
-<div id="postingsHere" class="green container-fluid">
-    <div class="row" style="display:inline-flex;">
+<div id="postingsHere" class="container-fluid">
+
+    <!--Button to Create Beer Posting-->
+    <div class="start-posting">
+        <p>Have some beers you'd like to spread the word about?
+        Get started finding their new home right here, right now.</p>
+        <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>
+    </div>
+    <div class="see-postings">
 
         <!--To list the beer postings-->
 
@@ -34,21 +41,21 @@
                         </div>
                     </div>
                 </div>
-                @if (listing.OwnerId == null)
+                @*@if (listing.OwnerId == null)
                 {
                 @Html.TextBox("listing.Owner", "no new user")
                 }
                 @if (listing.OwnerId != null) 
                 {
                     <div class="brellolist-header">@listing.OwnerId</div>
-                }
+                }*@
 
                 <!--Beer Posting Fields Displayed-->
 
-                <div>@listing.BeerPostingID</div>
-                <div class="brellolist-header">@listing.BeerName</div>
-                <div class="brellolist-header">@listing.Quantity</div>
-                <div class="brellolist-header">@listing.Note</div>
+                @*<div>@listing.BeerPostingID</div>*@
+                <div class="brellolist-header"><span>Beer Name:</span> @listing.BeerName</div>
+                <div class="brellolist-header"><span>Quantity Available:</span> @listing.Quantity</div>
+                <div class="brellolist-header"><span>Note:</span> @listing.Note</div>
                 <button class="btn btn-info" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
                 <div class="beerposting">
                     <ul class="center"></ul>
@@ -77,9 +84,7 @@
                 </div>
             </div>
 
-            <!--Button to Create Beer Posting-->
 
-            <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>
         </div>
 
     </div>

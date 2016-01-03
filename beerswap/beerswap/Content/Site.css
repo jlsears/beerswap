@@ -11,10 +11,10 @@
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
-*/
+
 .dl-horizontal dt {
     white-space: normal;
-}
+}*/
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -23,8 +23,29 @@ textarea {
     max-width: 280px;
 }
 
+
+.navbar {
+   
+}
+
+/*HOME PAGE*/
+
 .home-pic {
     background-image: url(../images/beer_on_barrel.jpg);
     background-size: cover;
     color: white;
 }
+
+/*************************
+ COMMUNITY BEER POSTINGS
+**************************/
+
+.start-posting {
+    float: left;
+    max-width:35%;
+}
+
+.see-postings {
+    display:inline-block;
+}
+
