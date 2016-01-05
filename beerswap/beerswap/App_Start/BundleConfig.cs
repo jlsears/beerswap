@@ -22,6 +22,8 @@ namespace Beerswap
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/MicrosoftAjax.debug.js",
+                      "~/Scripts/MicrosoftMvcAjax.debug.js",
                       "~/Scripts/custom.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

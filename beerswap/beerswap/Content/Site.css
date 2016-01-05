@@ -36,6 +36,36 @@ textarea {
     color: white;
 }
 
+#background-singlebeer {
+  position: fixed;
+  top: -40%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#background-singlebeer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.the-title {
+  height: 90px;
+  //width: 380px;
+  //background-color: none; opacity: 0.75; filter: alpha(opacity=50);
+  margin: 0 auto;
+  display: inline-block;
+  margin-top: 5%;
+  color: white;
+  //border: 1px solid white;
+}
+
 /*************************
  COMMUNITY BEER POSTINGS
 **************************/

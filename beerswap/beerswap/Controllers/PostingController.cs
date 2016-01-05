@@ -97,16 +97,14 @@ namespace Beerswap.Controllers
         }
 
         [HttpPost]
-        public ActionResult AcceptSwapOffer(FormCollection form)
+        public ActionResult AcceptSwapOffer(int _swapid)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
-            //string beer_name = form.Get("beerposting-name");
-            //int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
-            //string beer_note = form.Get("beerposting-note");
+            int swap_id = _swapid;
+            //int swap_id = Convert.ToInt32(form.Get("swap-id"));
 
-            hopCentral.EditSwapAcceptanceStatus(beer_posting_id);
+            hopCentral.EditSwapAcceptanceStatus(swap_id);
 
             return RedirectToAction("SwapView");
         }
@@ -126,7 +124,6 @@ namespace Beerswap.Controllers
             string posting_id_string = form.Get("post-id");
             int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
             string posting_user = form.Get("posting-user-id");
-            //ApplicationUser posting_user = hopCentral.Users.FirstOrDefault(u => u.Id == posting_user_id);
             int beer_qty_offered = Convert.ToInt32(form.Get("swap-quantity-offered"));
             int beer_qty_wanted = Convert.ToInt32(form.Get("swap-quantity-wanted"));
             string user_id = User.Identity.GetUserId();

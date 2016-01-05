@@ -286,9 +286,9 @@ namespace Beerswap.Models
             return result;
         }
 
-        public bool EditSwapAcceptanceStatus(int _postid)
+        public bool EditSwapAcceptanceStatus(int _swapid)
         {
-            var query = from p in context.Swaps where p.BeerPostingID == _postid select p;
+            var query = from p in context.Swaps where p.SwapId == _swapid select p;
             Swap found_swap = null;
             bool result = true;
 
