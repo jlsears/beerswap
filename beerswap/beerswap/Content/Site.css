@@ -57,13 +57,13 @@ textarea {
 
 .the-title {
   height: 90px;
-  //width: 380px;
-  //background-color: none; opacity: 0.75; filter: alpha(opacity=50);
+  /*width: 380px;*/
+  /*background-color: none; opacity: 0.75; filter: alpha(opacity=50);*/
   margin: 0 auto;
   display: inline-block;
   margin-top: 5%;
   color: white;
-  //border: 1px solid white;
+  /*border: 1px solid white;*/
 }
 
 /*************************
