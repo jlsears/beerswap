@@ -3,6 +3,9 @@
     ViewBag.Title = "Beer Postings";
 }
 
+<div id="background-barrel">
+    <img src="../images/barrel.jpg" />
+</div>
 
 <div id="postingsHere" class="container-fluid">
 
@@ -12,13 +15,13 @@
         Get started finding their new home right here, right now.</p>
         <button class="btn btn-info" data-toggle="modal" data-target="#list-modal">Add Beer Posting</button>
     </div>
-    <div class="see-postings">
+    <div class="see-postings indiv-postings">
 
         <!--To list the beer postings-->
 
         @foreach (var listing in Model)
         {
-            <div class="beerposting-wrapper">
+            <div class="indiv-postings">
 
                 <!--Swap Proposal Form-->
 
@@ -53,10 +56,10 @@
                 <!--Beer Posting Fields Displayed-->
 
                 @*<div>@listing.BeerPostingID</div>*@
-                <div class="brellolist-header"><span>Beer Name:</span> @listing.BeerName</div>
+                <div class="brellolist-header beer-name"> @listing.BeerName</div>
                 <div class="brellolist-header"><span>Quantity Available:</span> @listing.Quantity</div>
                 <div class="brellolist-header"><span>Note:</span> @listing.Note</div>
-                <button class="btn btn-info" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
+                <button class="btn btn-warning" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
                 <div class="beerposting">
                     <ul class="center"></ul>
                 </div>

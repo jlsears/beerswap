@@ -4,8 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Beerswap.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Web.Mvc.Ajax;
 
-namespace beerswap.Controllers
+namespace Beerswap.Controllers
 {
     public class SwapController : Controller
     {
@@ -21,10 +25,34 @@ namespace beerswap.Controllers
             hopCentral = hoppy;
         }
 
+
         // GET: Swap
         public ActionResult Index()
         {
             return View();
+        }
+
+        //public ActionResult SwapView()
+        //{
+        //    string user_id = User.Identity.GetUserId();
+        //    ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
+
+        //    List<Swap> theirSwaps = hopCentral.GetSwapsForUser(brewLover);
+        //    return View(theirSwaps);
+
+        //}
+
+        [HttpPost]
+        public ActionResult AcceptSwapOffer(int _swapid)
+        {
+            UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            int swap_id = _swapid;
+            //int swap_id = Convert.ToInt32(form.Get("swap-id"));
+
+            hopCentral.EditSwapAcceptanceStatus(swap_id);
+
+            return RedirectToAction("SwapView");
         }
 
         // GET: Swap/Details/5

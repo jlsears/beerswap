@@ -73,9 +73,40 @@ textarea {
 .start-posting {
     float: left;
     max-width:35%;
+    padding-top: 35px;
 }
 
 .see-postings {
     display:inline-block;
+    margin-top: 15px;
+}
+
+.indiv-postings {
+    padding-top: 10px;
+    border-bottom: solid 1px #747D7D;
+    width: 65%;
+}
+
+.beer-name {
+    font-size: 25px;
+}
+
+#background-barrel {
+  position: fixed;
+  top: -40%;
+  /*left: -50%;*/
+  width: 200%;
+  /*height: 100%;*/
+}
+
+#background-barrel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 20%;
+  min-height: 50%;
 }
 

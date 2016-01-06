@@ -7,6 +7,7 @@ using Beerswap.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Web.Mvc.Ajax;
 
 namespace Beerswap.Controllers
 {
@@ -96,7 +97,7 @@ namespace Beerswap.Controllers
             return RedirectToAction("PostHistoryView");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult AcceptSwapOffer(int _swapid)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
