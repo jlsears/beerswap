@@ -98,14 +98,14 @@ namespace Beerswap.Controllers
         }
 
         [HttpGet]
-        public ActionResult AcceptSwapOffer(string _swapid)
+        public ActionResult AcceptSwapOffer(int id)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            int swap_id = Convert.ToInt32(_swapid);
+            //int swap_id = Convert.ToInt32(_swapid);
             //int swap_id = Convert.ToInt32(form.Get("swap-id"));
 
-            hopCentral.EditSwapAcceptanceStatus(swap_id);
+            hopCentral.EditSwapAcceptanceStatus(id);
 
             return RedirectToAction("SwapView");
         }
