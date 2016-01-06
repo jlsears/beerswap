@@ -19,7 +19,7 @@
                 <div class="brellolist-header">@swapping.SwapDate</div>
                 <div class="brellolist-header">@swapping.AcceptSwap</div>
                 <div> @Ajax.ActionLink("Accept Swap", "AcceptSwapOffer", "Posting", @swapping.SwapId, new AjaxOptions { UpdateTargetId = "swapOffer" + swapping.SwapId }, "GET") </div>
-                <button class="btn btn-info" onclick=("AcceptSwapOffer", "Posting", @swapping.SwapId)>Accept Swap</button>
+                @*<button class="btn btn-info" onclick=("AcceptSwapOffer", "Posting", @swapping.SwapId)>Accept Swap</button>*@
                 <div class="swaps">
                     <ul class="center"></ul>
                 </div>
