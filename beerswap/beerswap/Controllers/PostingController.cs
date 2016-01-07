@@ -68,7 +68,6 @@ namespace Beerswap.Controllers
         public ActionResult CreateBeerPosting(FormCollection form)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //ApplicationUser brewLover = manager.FindById(User.Identity.GetUserId());
 
             string beer_name = form.Get("beerposting-name");
             int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
@@ -101,9 +100,6 @@ namespace Beerswap.Controllers
         public ActionResult AcceptSwapOffer(int id)
         {
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-
-            //int swap_id = Convert.ToInt32(_swapid);
-            //int swap_id = Convert.ToInt32(form.Get("swap-id"));
 
             hopCentral.EditSwapAcceptanceStatus(id);
 

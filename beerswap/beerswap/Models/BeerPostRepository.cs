@@ -34,7 +34,6 @@ namespace Beerswap.Models
 
         public BeerPosting CreatePosting(ApplicationUser owner, BeerPosting _newbeerposting)
         {
-            //BeerPosting drinkup = new BeerPosting { Owner = owner };
             context.BeerPostings.Add(_newbeerposting);
             context.SaveChanges();
 
@@ -234,8 +233,6 @@ namespace Beerswap.Models
 
         public List<Swap> GetSwapsForUser(ApplicationUser specificUser)
         {
-            // var query = from s in context.Swaps where s.OfferUser.Id == specificUser.Id select s;
-            // New code to implement "or user is beer posting owner" here
             var query = from s in context.Swaps where s.OfferUserId == specificUser.Id || s.OwnerId == specificUser.Id select s;
 
             return query.ToList<Swap>();
@@ -244,18 +241,10 @@ namespace Beerswap.Models
         public Swap GetSwapById(int _beerpostid, int _swapid)
         {
             var query = from s in context.BeerPostings where s.BeerPostingID == _beerpostid select s;
-            //return query.Select(beerposting => beerposting.Swaps).ToList();
-            //BeerPosting found_post = query.Single<BeerPosting>();
-            //Swap query2 = from y in context.Swaps where y.SwapId == _swapid select y;
             BeerPosting foundit = query.Single<BeerPosting>();
             var query2 = from x in foundit.Swaps where x.SwapId == _swapid select x;
             Swap foundagain = query2.Single<Swap>();
             return foundagain;
-
-            //var query = from s in context.Swaps where s.BeerPostingID == _beerpostid select s;
-            //BeerPosting found_post = query.Single<Swap>();
-
-            //return query.ToList();
         }
 
         public bool EditBeerOfferedName(int _postid, Swap _swap, string _newName)
