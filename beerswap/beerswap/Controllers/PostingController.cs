@@ -112,10 +112,10 @@ namespace Beerswap.Controllers
 
 
         [HttpGet]
-        public ActionResult DeleteBeerPosting(BeerPosting _specificPosting)
+        public ActionResult DeleteBeerPosting(int id)
         {
-            hopCentral.RemoveBeerPosting(_specificPosting);
-            return RedirectToAction("Index");
+            hopCentral.RemoveBeerPosting(id);
+            return RedirectToAction("PostHistoryView");
         }
 
         [HttpPost]

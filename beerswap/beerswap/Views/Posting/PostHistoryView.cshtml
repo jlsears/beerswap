@@ -36,10 +36,11 @@
                 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-popover-content=@($"#postingPopover{postHist.BeerPostingID}")> popover</a>
                 <div id=@($"postingPopover{postHist.BeerPostingID}") class="hide">
                     <ul>
-                        <li><a href="#" data-target=@($"Html.Action('DeleteBeerPosting','PostingController', {postHist.BeerPostingID})")>Delete</a></li>
+                        @*<li><a href="#" data-target=@($"Html.Action('DeleteBeerPosting','PostingController', {postHist.BeerPostingID})")>Delete</a></li>*@
                         <li><a href="#" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</a></li>
-                        <li><button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button></li>
-                        <li><button class="btn btn-info" data-target=@($"Action('DeleteBeerPosting','PostingController', {postHist.BeerPostingID})")>Delete</button></li>
+                        @*<li><button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button></li>
+                        <li><button class="btn btn-info" data-target=@($"Action('DeleteBeerPosting','PostingController', {postHist.BeerPostingID})")>Delete</button></li>*@
+                        <li> @Ajax.ActionLink("Delete", "DeleteBeerPosting/" + postHist.BeerPostingID, "Posting", new AjaxOptions { }) </li>
                     </ul>
                 </div>
                 <button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button>

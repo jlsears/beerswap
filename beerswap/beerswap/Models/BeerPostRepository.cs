@@ -58,10 +58,28 @@ namespace Beerswap.Models
             return context.BeerPostings.ToList();
         }
 
-        public void RemoveBeerPosting(BeerPosting hastalavista)
+        public bool RemoveBeerPosting(int _beerpostingid)
         {
-            context.BeerPostings.Remove(hastalavista);
-            context.SaveChanges();
+            var query = from b in context.BeerPostings where b.BeerPostingID == _beerpostingid select b;
+            BeerPosting found_post = null;
+            bool result = true;
+
+            try
+            {
+                found_post = query.Single<BeerPosting>();
+                context.BeerPostings.Remove(found_post);
+                context.SaveChanges();               
+            }
+            catch (InvalidOperationException)
+            {
+
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
         }
 
         public BeerPosting GetPostingById (int posting_id)
