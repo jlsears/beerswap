@@ -4,7 +4,7 @@
 }
 
 <div id="PostHistoryList" class="green container-fluid">
-    <div class="row" style="display:inline-flex;">
+    <div class="row see-phistory indiv-phistory">
         @foreach (var postHist in Model)
         {
             <div class="beerposting-wrapper">
@@ -31,7 +31,7 @@
 
             <!--Beer Posting Display-->
 
-            <div class="posts-wrapper">
+            <div class="posts-wrapper indiv-phistory">
                 <div class="brellolist-header">@postHist.BeerName</div>
                 <div class="brellolist-header">@postHist.Quantity</div>
                 <div class="brellolist-header">@postHist.Note</div>
@@ -42,7 +42,7 @@
                         <li> @Ajax.ActionLink("Delete", "DeleteBeerPosting/" + postHist.BeerPostingID, "Posting", new AjaxOptions { }) </li>
                     </ul>
                 </div>
-                <button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button>
+                @*<button class="btn btn-info" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</button>*@
                 <div class="posts">
                     <ul class="center"></ul>
                 </div>

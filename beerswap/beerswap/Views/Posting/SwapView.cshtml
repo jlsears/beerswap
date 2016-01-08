@@ -4,20 +4,20 @@
 }
 
 <div id="swapList" class="green container-fluid">
-    <div class="row" style="display:inline-flex;">
+    <div class="row see-swaps indiv-swaps">
         @foreach (var swapping in Model)
         {
-            <div class="swap-wrapper">
-                <div class="brellolist-header">@swapping.SwapId</div>
-                <div class="brellolist-header">@swapping.BeerPostingID</div>
-                <div class="brellolist-header">@swapping.BeerName</div>
-                <div class="brellolist-header">@swapping.BeerOffered</div>
-                <div class="brellolist-header">@swapping.OfferUserId</div>
-                <div class="brellolist-header">@swapping.OwnerId</div>
-                <div class="brellolist-header">@swapping.QtyOffered</div>
-                <div class="brellolist-header">@swapping.QtyWanted</div>
-                <div class="brellolist-header">@swapping.SwapDate</div>
-                <div class="brellolist-header">@swapping.AcceptSwap</div>
+            <div class="swap-wrapper indiv-swaps">
+                @*<div class="brellolist-header">@swapping.SwapId</div>
+                <div class="brellolist-header">@swapping.BeerPostingID</div>*@
+                <div class="brellolist-header">Beer Posted @swapping.BeerName</div>
+                <div class="brellolist-header">Beer Offered @swapping.BeerOffered</div>
+                @*<div class="brellolist-header">@swapping.OfferUserId</div>
+                <div class="brellolist-header">@swapping.OwnerId</div>*@
+                <div class="brellolist-header">Qty Offered @swapping.QtyOffered</div>
+                <div class="brellolist-header">Qty Wanted @swapping.QtyWanted</div>
+                <div class="brellolist-header">Swap Offer Date @swapping.SwapDate</div>
+                <div class="brellolist-header">Swap Accepted? @swapping.AcceptSwap</div>
                 <div> @Ajax.ActionLink("Accept Swap", "AcceptSwapOffer/" + swapping.SwapId, "Posting", new AjaxOptions { }) </div>
                 <div class="swaps">
                     <ul class="center"></ul>

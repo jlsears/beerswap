@@ -110,3 +110,32 @@ textarea {
   min-height: 50%;
 }
 
+/*************************
+ SWAPS VIEW
+**************************/
+
+.see-swaps {
+    display:inline-block;
+    margin-top: 15px;
+}
+
+.indiv-swaps {
+    padding-top: 10px;
+    border-bottom: solid 1px #747D7D;
+    width: 65%;
+}
+
+/*************************
+ POSTING HISTORY VIEW
+**************************/
+
+.see-phistory {
+    display:inline-block;
+    margin-top: 15px;
+}
+
+.indiv-phistory {
+    padding-top: 10px;
+    border-bottom: solid 1px #747D7D;
+    width: 65%;
+}
