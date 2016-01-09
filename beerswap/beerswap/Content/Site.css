@@ -72,13 +72,19 @@ textarea {
 
 .start-posting {
     float: left;
-    max-width:35%;
-    padding-top: 35px;
+    max-width:25%;
+    margin-top: 35px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    background-color: #e5e5e5;
 }
 
 .see-postings {
     display:inline-block;
     margin-top: 15px;
+    padding-left: 20px;
 }
 
 .indiv-postings {
@@ -91,13 +97,11 @@ textarea {
     font-size: 25px;
 }
 
-#background-barrel {
+/*#background-barrel {
   position: fixed;
   top: -40%;
-  /*left: -50%;*/
   width: 200%;
-  /*height: 100%;*/
-}
+}*/
 
 #background-barrel img {
   position: absolute;
@@ -105,9 +109,18 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
-  min-width: 20%;
-  min-height: 50%;
+  /*margin: auto;*/
+  /*min-width: 20%;
+  min-height: 100%;*/
+}
+
+.the-barrel {
+    float: right;
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 /*************************
