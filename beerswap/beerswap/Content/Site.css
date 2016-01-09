@@ -3,19 +3,6 @@
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-
-.dl-horizontal dt {
-    white-space: normal;
-}*/
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -79,6 +66,7 @@ textarea {
     padding-bottom: 15px;
     padding-right: 15px;
     background-color: #e5e5e5;
+    margin-right: 50px;
 }
 
 .see-postings {
@@ -90,28 +78,11 @@ textarea {
 .indiv-postings {
     padding-top: 10px;
     border-bottom: solid 1px #e5e5e5;
-    width: 65%;
+    width: 450px;
 }
 
 .beer-name {
     font-size: 25px;
-}
-
-/*#background-barrel {
-  position: fixed;
-  top: -40%;
-  width: 200%;
-}*/
-
-#background-barrel img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /*margin: auto;*/
-  /*min-width: 20%;
-  min-height: 100%;*/
 }
 
 .the-barrel {
@@ -119,8 +90,11 @@ textarea {
     height: 100%;
     width: 30%;
     position: fixed;
-    top: 0;
     right: 0;
+}
+
+.propose-button {
+    margin-top: 10px;
 }
 
 /*************************

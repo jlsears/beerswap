@@ -3,15 +3,11 @@
     ViewBag.Title = "Beer Postings";
 }
 
-@*<div id="background-barrel">
-    <img src="../images/barrel.jpg" />
-</div>*@
-
 <div class="the-barrel">
     <img src="../images/barrel-fittyper.jpg" />
 </div>
 
-<div id="postingsHere" class="container-fluid">
+<div class="container-fluid">
 
     <!--Button to Create Beer Posting-->
     <div class="start-posting">
@@ -61,9 +57,9 @@
 
                 @*<div>@listing.BeerPostingID</div>*@
                 <div class="brellolist-header beer-name"> @listing.BeerName</div>
-                <div class="brellolist-header"><span>Quantity Available:</span> @listing.Quantity</div>
+                <div class="brellolist-header"><span>Qty Available:</span> @listing.Quantity</div>
                 <div class="brellolist-header"><span>Note:</span> @listing.Note</div>
-                <button class="btn btn-warning" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
+                <button class="btn btn-warning propose-button" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
                 <div class="beerposting">
                     <ul class="center"></ul>
                 </div>
