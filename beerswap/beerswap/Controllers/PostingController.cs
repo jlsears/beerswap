@@ -102,6 +102,7 @@ namespace Beerswap.Controllers
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
             hopCentral.EditSwapAcceptanceStatus(id);
+            hopCentral.EditPostingAcceptanceStatus(id);
 
             return RedirectToAction("SwapView");
         }
