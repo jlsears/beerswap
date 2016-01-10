@@ -3,6 +3,10 @@
     ViewBag.Title = "PostHistoryView";
 }
 
+<div class="the-hops">
+    <img src="../images/hops-75.jpg" />
+</div>
+
 <div id="PostHistoryList" class="green container-fluid">
     <div class="row see-phistory indiv-phistory">
         @foreach (var postHist in Model)
@@ -32,10 +36,10 @@
             <!--Beer Posting Display-->
 
             <div class="posts-wrapper indiv-phistory">
-                <div class="brellolist-header">@postHist.BeerName</div>
-                <div class="brellolist-header">@postHist.Quantity</div>
-                <div class="brellolist-header">@postHist.Note</div>
-                <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-popover-content=@($"#postingPopover{postHist.BeerPostingID}")> popover</a>
+                <div class="brellolist-header beer-name">@postHist.BeerName</div>
+                <div class="brellolist-header">Qty Available: @postHist.Quantity</div>
+                <div class="brellolist-header">Note: @postHist.Note</div>
+                <a tabindex="0" class="btn btn-lg btn-danger propose-button" role="button" data-toggle="popover" data-trigger="focus" data-popover-content=@($"#postingPopover{postHist.BeerPostingID}")> popover</a>
                 <div id=@($"postingPopover{postHist.BeerPostingID}") class="hide">
                     <ul>
                         <li><a href="#" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</a></li>
