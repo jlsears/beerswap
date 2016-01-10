@@ -54,6 +54,8 @@ namespace Beerswap.Models
 
         public List<BeerPosting> GetAllPostings()
         {
+            //var query = from b in context.BeerPostings where b.OwnerId == specificUser.Id select b;
+            //return query.ToList<BeerPosting>();
             return context.BeerPostings.ToList();
         }
 
@@ -303,6 +305,34 @@ namespace Beerswap.Models
             {
                 found_swap = query.Single<Swap>();
                 found_swap.AcceptSwap = true;
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                result = false;
+            }
+            catch (ArgumentNullException)
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public bool EditPostingAcceptanceStatus(int _swapid)
+        {
+            var query1 = from p in context.Swaps where p.SwapId == _swapid select p;
+            Swap query1Found = null;
+            query1Found = query1.Single<Swap>();
+
+            var query2 = from q in context.BeerPostings where q.BeerPostingID == query1Found.BeerPostingID select q;
+            BeerPosting query2Found = null;
+            query2Found = query2.Single<BeerPosting>();
+
+            bool result = true;
+
+            try
+            {
+                query2Found.PostingAccepted = true;
                 context.SaveChanges();
             }
             catch (InvalidOperationException)

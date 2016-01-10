@@ -60,6 +60,7 @@
                 <div class="brellolist-header beer-name"> @listing.BeerName</div>
                 <div class="brellolist-header"><span>Qty Available:</span> @listing.Quantity</div>
                 <div class="brellolist-header"><span>Note:</span> @listing.Note</div>
+                <div class="brellolist-header"><span>Posting Accepted?</span> @listing.PostingAccepted</div>
                 <button class="btn btn-warning propose-button" data-toggle="modal" data-target=@($"#swap-modal{listing.BeerPostingID}")>Propose Swap</button>
                 <div class="beerposting">
                     <ul class="center"></ul>

@@ -16,6 +16,7 @@ namespace beerswap.Migrations
                         OwnerId = c.String(),
                         Quantity = c.Int(nullable: false),
                         Note = c.String(),
+                        PostingAccepted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.BeerPostingID);
             

@@ -15,6 +15,7 @@ namespace Beerswap.Models
         public int Quantity { get; set; }
         public string Note { get; set; }
         public virtual List<Swap> Swaps { get; set; }
+        public bool PostingAccepted { get; set; }
 
         public BeerPosting()
         {
