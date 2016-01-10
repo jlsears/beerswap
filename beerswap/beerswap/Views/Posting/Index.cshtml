@@ -33,6 +33,7 @@
                                 @Html.AntiForgeryToken()
                                 @Html.Hidden("post-id", listing.BeerPostingID as Object)
                                 @Html.Hidden("posting-user-id", listing.OwnerId as Object)
+                                @Html.Hidden("original-beer", listing.BeerName as Object)
   
                                 @Html.Hidden("swap-id", ViewBag.CurrentSwapId as object)
                                 <div class="modal-header">Create New Swap Offer @ViewBag.CurrentPostId</div>

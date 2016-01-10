@@ -118,6 +118,7 @@ namespace Beerswap.Controllers
         public ActionResult CreateSwapOffer(FormCollection form)
         {
             string beer_name_offered = form.Get("swap-beer-name");
+            string original_beer = form.Get("original-beer");
             string posting_id_string = form.Get("post-id");
             int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
             string posting_user = form.Get("posting-user-id");
@@ -129,7 +130,7 @@ namespace Beerswap.Controllers
 
             if (posting_id_string != null)
             {
-                hopCentral.AddSwap( beer_posting_id, new Swap { OwnerId = posting_user, OfferUserId = brewLoverId, BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id });
+                hopCentral.AddSwap( beer_posting_id, new Swap { OwnerId = posting_user, OfferUserId = brewLoverId, BeerOffered = beer_name_offered, QtyOffered = beer_qty_offered, SwapDate = DateTime.Now, QtyWanted = beer_qty_wanted, BeerPostingID = beer_posting_id, BeerName = original_beer });
             }
 
             return RedirectToAction("SwapView");
