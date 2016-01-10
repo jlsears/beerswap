@@ -15,7 +15,9 @@ textarea {
    
 }
 
-/*HOME PAGE*/
+/*************************
+ HOME PAGE
+**************************/
 
 .home-pic {
     background-image: url(../images/beer_on_barrel.jpg);
@@ -51,6 +53,44 @@ textarea {
   margin-top: 5%;
   color: white;
   /*border: 1px solid white;*/
+}
+
+/*************************
+ ABOUT PAGE
+**************************/
+
+#background-wall-beer {
+  position: fixed;
+  top: -40%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#background-wall-beer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.about-summary {
+  height: 425px;
+  width: 75%;
+  background-color: #FFFFFF; opacity: 0.85; filter: alpha(opacity=75);
+  /*position: absolute;*/
+  margin: 0 auto;
+  display: inline-block;
+  /*margin-top: 15%;*/
+  padding-bottom: 20px;
+  margin-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
 }
 
 /*************************
@@ -146,4 +186,8 @@ textarea {
     width: 30%;
     position: fixed;
     left: 0;
+}
+
+.popover-options-list {
+    text-decoration: none;
 }
