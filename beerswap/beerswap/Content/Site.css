@@ -101,6 +101,13 @@ textarea {
  SWAPS VIEW
 **************************/
 
+.the-light-beer {
+    float: right;
+    height: 100%;
+    width: 40%;
+    position: fixed;
+    right: 0;
+}
 .see-swaps {
     display:inline-block;
     margin-top: 15px;
@@ -108,8 +115,12 @@ textarea {
 
 .indiv-swaps {
     padding-top: 10px;
-    border-bottom: solid 1px #747D7D;
+    border-bottom: solid 1px #e5e5e5;
     width: 65%;
+}
+
+.accept-link {
+    margin-top: 10px;
 }
 
 /*************************
