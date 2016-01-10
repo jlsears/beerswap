@@ -54,9 +54,9 @@ namespace Beerswap.Models
 
         public List<BeerPosting> GetAllPostings()
         {
-            //var query = from b in context.BeerPostings where b.OwnerId == specificUser.Id select b;
-            //return query.ToList<BeerPosting>();
-            return context.BeerPostings.ToList();
+            var query = from b in context.BeerPostings where b.PostingAccepted == false select b;
+            return query.ToList<BeerPosting>();
+            //return context.BeerPostings.ToList();
         }
 
         public bool RemoveBeerPosting(int _beerpostingid)
