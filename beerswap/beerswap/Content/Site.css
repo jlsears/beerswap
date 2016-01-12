@@ -207,6 +207,42 @@ textarea {
  LOGIN VIEW
 **************************/
 
+#background-aerialbeer {
+  position: fixed;
+  top: -40%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#background-aerialbeer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.register-decor {
+  background-color: #FFFFFF; opacity: 0.75; filter: alpha(opacity=50);
+  /*text-align: center;*/
+  width: 40%;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.title-center {
+    text-align: center;
+}
+
+/*************************
+ LOGIN VIEW
+**************************/
+
 .login-top {
     margin-top: 20px;
 }
