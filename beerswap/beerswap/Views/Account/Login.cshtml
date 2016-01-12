@@ -4,7 +4,7 @@
 @model LoginViewModel
 
 <div id="background-lightbeer">
-    <img src="../images/light_beer-fittyper.jpg" />
+    <img src="../images/carton.jpg" />
 </div>
 
 @{
@@ -13,14 +13,14 @@
 
 
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
+@*<h2>@ViewBag.Title.</h2>*@
+<div class="row login-top">
     <div class="col-md-8 login-decor">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4 class="login-title">Use a local account to log in.</h4>
+                <h4 class="login-title">Login here</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <p class="login-title">
-                    @Html.ActionLink("Register as a new user", "Register")
+                    @Html.ActionLink("Did you mean register?", "Register")
                 </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>

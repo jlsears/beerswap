@@ -207,6 +207,10 @@ textarea {
  LOGIN VIEW
 **************************/
 
+.login-top {
+    margin-top: 20px;
+}
+
 #background-lightbeer {
   position: fixed;
   top: -40%;
@@ -227,7 +231,7 @@ textarea {
 }
 
 .login-decor {
-  background-color: #FFFFFF; opacity: 0.85; filter: alpha(opacity=75);
+  background-color: #FFFFFF; opacity: 0.75; filter: alpha(opacity=50);
   float: right;
   width: 40%;
 }
