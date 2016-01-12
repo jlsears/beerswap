@@ -12,16 +12,17 @@
         @foreach (var swapping in Model)
         {
             <div class="swap-wrapper indiv-swaps">
-                @*<div class="brellolist-header">@swapping.SwapId</div>
-                <div class="brellolist-header">@swapping.BeerPostingID</div>*@
-                <div class="brellolist-header beer-name">Beer Posted: @swapping.BeerName</div>
-                <div class="brellolist-header beer-name">Beer Offered: @swapping.BeerOffered</div>
-                @*<div class="brellolist-header">@swapping.OfferUserId</div>
-                <div class="brellolist-header">@swapping.OwnerId</div>*@
-                <div class="brellolist-header">Qty Offered @swapping.QtyOffered</div>
-                <div class="brellolist-header">Qty Wanted @swapping.QtyWanted</div>
-                <div class="brellolist-header">Swap Offer Date @swapping.SwapDate</div>
-                <div class="brellolist-header">Swap Accepted? @swapping.AcceptSwap</div>
+                @*<div class="">@swapping.SwapId</div>
+                  <div class="">@swapping.BeerPostingID</div>*@
+                <div class=" beer-name">Beer Posted: @swapping.BeerName</div>
+                <div class=" beer-name">Beer Offered: @swapping.BeerOffered</div>
+                @*<div class="">@swapping.OfferUserId</div>
+                    <div class="">@swapping.OwnerId</div>*@
+                <div class="">Qty Offered @swapping.QtyOffered</div>
+                <div class="">Qty Wanted @swapping.QtyWanted</div>
+                @*<div>Offer User: @swapping.OfferUserId.</div>*@
+                <div class="">Swap Offer Date @swapping.SwapDate</div>
+                <div class="">Swap Accepted? @swapping.AcceptSwap</div>
                 <div class="accept-link"> @Ajax.ActionLink("Accept Swap", "AcceptSwapOffer/" + swapping.SwapId, "Posting", new AjaxOptions { }) </div>
                 <div class="swaps">
                     <ul class="center"></ul>

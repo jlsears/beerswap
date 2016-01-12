@@ -203,6 +203,10 @@ textarea {
     text-decoration: none;
 }
 
+.history-decor {
+    list-style-type: none;
+}
+
 /*************************
  LOGIN VIEW
 **************************/

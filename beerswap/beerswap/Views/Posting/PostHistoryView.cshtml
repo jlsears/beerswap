@@ -36,14 +36,14 @@
             <!--Beer Posting Display-->
 
             <div class="posts-wrapper indiv-phistory">
-                <div class="brellolist-header beer-name">@postHist.BeerName</div>
-                <div class="brellolist-header">Qty Available: @postHist.Quantity</div>
-                <div class="brellolist-header">Note: @postHist.Note</div>
-                <div class="brellolist-header">Note: @postHist.PostingAccepted</div>
+                <div class="beer-name">@postHist.BeerName</div>
+                <div>Qty Available: @postHist.Quantity</div>
+                <div>Note: @postHist.Note</div>
+                <div>Note: @postHist.PostingAccepted</div>
                 <a tabindex="0" class="btn btn-lg btn-warning propose-button" role="button" data-toggle="popover" data-trigger="focus" data-popover-content=@($"#postingPopover{postHist.BeerPostingID}")> <span class="glyphicon glyphicon-cog aria-hidden="true"></a>
                 <div id=@($"postingPopover{postHist.BeerPostingID}") class="hide">
-                    <ul>
-                        <li><a href="#" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</a></li>
+                    <ul class="history-decor">
+                        <li class="history-decor"><a href="#" data-toggle="modal" data-target=@($"#editing-modal{postHist.BeerPostingID}")>Edit Posting</a></li>
                         <li> @Ajax.ActionLink("Delete", "DeleteBeerPosting/" + postHist.BeerPostingID, "Posting", new AjaxOptions { }) </li>
                     </ul>
                 </div>
