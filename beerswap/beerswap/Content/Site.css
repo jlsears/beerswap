@@ -55,6 +55,17 @@ textarea {
   /*border: 1px solid white;*/
 }
 
+.beer-adoption {
+    
+}
+
+.home-thompson {       
+    /*width: 30%;*/
+    margin-left: 40%;
+    margin-top: -15%;
+    padding-left: 45%;
+}
+
 /*************************
  ABOUT PAGE
 **************************/
@@ -190,4 +201,37 @@ textarea {
 
 .popover-options-list {
     text-decoration: none;
+}
+
+/*************************
+ LOGIN VIEW
+**************************/
+
+#background-lightbeer {
+  position: fixed;
+  top: -40%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+#background-lightbeer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+.login-decor {
+  background-color: #FFFFFF; opacity: 0.85; filter: alpha(opacity=75);
+  float: right;
+  width: 40%;
+}
+
+.login-title {
+    text-align: center;
 }

@@ -17,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Beer Swap", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Wild at Hop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -39,7 +39,7 @@
                 {
                     <li>@Html.ActionLink("Swap History", "SwapView", "Posting")</li>
                 }
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
