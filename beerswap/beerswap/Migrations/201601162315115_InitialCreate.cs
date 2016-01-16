@@ -14,6 +14,7 @@ namespace beerswap.Migrations
                         BeerPostingID = c.Int(nullable: false, identity: true),
                         BeerName = c.String(),
                         OwnerId = c.String(),
+                        OwnerName = c.String(),
                         Quantity = c.Int(nullable: false),
                         Note = c.String(),
                         PostingAccepted = c.Boolean(nullable: false),
