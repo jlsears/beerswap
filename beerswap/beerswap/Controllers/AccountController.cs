@@ -57,7 +57,7 @@ namespace Beerswap.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = "/Posting";
             return View();
         }
 
