@@ -19,6 +19,7 @@ namespace Beerswap.Models
         public int QtyWanted { get; set; }
         public int QtyOffered { get; set; }
         public string BeerOffered { get; set; }
+        public string SwapNote { get; set; }
 
         public Swap()
         {

@@ -75,3 +75,5 @@ C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\De
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csprojResolveAssemblyReference.cache
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.Migrations.InitialCreate.resources
 C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\Beerswap.csproj.GenerateResource.Cache
+C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.Migrations.NoteField.resources
+C:\Users\Jennifer\Desktop\NSS_Projects\BackEnd\beerswap\beerswap\beerswap\obj\Debug\beerswap.Migrations.NoteField2.resources

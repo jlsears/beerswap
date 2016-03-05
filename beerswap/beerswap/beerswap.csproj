@@ -189,6 +189,14 @@
     <Compile Include="Migrations\201601240204353_InitialCreate.Designer.cs">
       <DependentUpon>201601240204353_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603052203174_NoteField.cs" />
+    <Compile Include="Migrations\201603052203174_NoteField.Designer.cs">
+      <DependentUpon>201603052203174_NoteField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603052213236_NoteField2.cs" />
+    <Compile Include="Migrations\201603052213236_NoteField2.Designer.cs">
+      <DependentUpon>201603052213236_NoteField2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BeerContext.cs" />
@@ -277,6 +285,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601240204353_InitialCreate.resx">
       <DependentUpon>201601240204353_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603052203174_NoteField.resx">
+      <DependentUpon>201603052203174_NoteField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603052213236_NoteField2.resx">
+      <DependentUpon>201603052213236_NoteField2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
