@@ -46,6 +46,12 @@ namespace Beerswap.Models
             return query.ToList<BeerPosting>();
         }
 
+        public int GetBeerPostingCount(string userid)
+        {
+            var query = from b in context.BeerPostings where b.OwnerId == userid select b;
+            return query.Count();
+        }
+
         public int GetBeerPostingCount()
         {
             var query = from p in context.BeerPostings select p;

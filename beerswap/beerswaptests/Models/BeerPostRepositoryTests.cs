@@ -128,6 +128,30 @@ namespace Beerswaptests.Models
 
         }
 
+        [TestMethod]
+        public void BPRepositoryEnsureICanGetBeerPostingCountforSpecificUser()
+        {
+            var data = my_beerpostings.AsQueryable();
+
+            BeerPostRepository brewing = new BeerPostRepository(mock_context.Object);
+
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.Provider).Returns(data.Provider);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(m => m.Expression).Returns(data.Expression);
+
+            mock_context.Setup(m => m.BeerPostings).Returns(mock_beerpostings.Object);
+
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 2, BeerName = "Swill", OwnerId = "2" });
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 3, BeerName = "More Swill", OwnerId = "2" });
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 4, BeerName = "Something Else", OwnerId = "1" });
+            my_beerpostings.Add(new BeerPosting { BeerPostingID = 5, BeerName = "Different", OwnerId = "2" });
+            mock_beerpostings.As<IQueryable<BeerPosting>>().Setup(b => b.GetEnumerator()).Returns(data.GetEnumerator());
+
+            Assert.AreEqual(3, brewing.GetBeerPostingCount("2"));
+
+        }
+
         //[TestMethod]
         //public void BPRepositoryEnsureICanDeleteABeerPosting()
         //{
@@ -240,7 +264,7 @@ namespace Beerswaptests.Models
         //    int expected = 1;
         //    List<Swap> actual_swaps = brewing.GetSwapsForUser(userA);
 
-        //    Assert.AreEqual(expected, actual_swaps.Count());
+        //    Assert.AreEqual(expected, actual_swaps.Count);
         //}
 
         //[TestMethod]
