@@ -23,9 +23,9 @@
             <ul class="nav navbar-nav">
                 @*@if (!Request.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-                }
+                }*@
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 @if (Request.IsAuthenticated)
                 {
@@ -39,14 +39,10 @@
                 {
                     <li>@Html.ActionLink("Swap History", "SwapView", "Posting")</li>
                 }
-                @if (Request.IsAuthenticated)
+                @*@if (Request.IsAuthenticated)
                 {
-                    <li>@Html.ActionLink("Posting History", "PostHistoryView", "Posting")</li>
-                }
-                @if (Request.IsAuthenticated)
-                {
-                    <li>"Posting Count: " + GetBeerPostingCount(User)</li>
-                }
+                    <li>"Posting Count: " + GetBeerPostingCount(User.Id);</li>
+                }*@
                 @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
             </ul>
             @Html.Partial("_LoginPartial")
