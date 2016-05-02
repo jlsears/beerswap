@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Web.Mvc.Ajax;
+using System.Text.RegularExpressions;
 
 namespace Beerswap.Controllers
 {
@@ -70,7 +71,22 @@ namespace Beerswap.Controllers
             UserManager<ApplicationUser> manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
             string beer_name = form.Get("beerposting-name");
-            int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
+            int beer_qty;
+            Regex rx = new Regex("[0-9]+$");
+
+            if (rx.IsMatch(form.Get("beerposting-quantity")))
+            {
+                beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
+            }
+            else
+            {
+                //throw new ArgumentOutOfRangeException();
+                System.Windows.Forms.MessageBox.Show("That's not a number. Please try again.");
+                //Environment.Exit(1);
+                return RedirectToAction("Index");
+               
+            }
+           
             string beer_note = form.Get("beerposting-note");
             string user_id = User.Identity.GetUserId();
             string user_name = User.Identity.GetUserName();
