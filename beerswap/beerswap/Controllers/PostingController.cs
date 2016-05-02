@@ -80,11 +80,8 @@ namespace Beerswap.Controllers
             }
             else
             {
-                //throw new ArgumentOutOfRangeException();
                 System.Windows.Forms.MessageBox.Show("That's not a number. Please try again.");
-                //Environment.Exit(1);
                 return RedirectToAction("Index");
-               
             }
            
             string beer_note = form.Get("beerposting-note");
