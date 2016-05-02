@@ -74,7 +74,7 @@ namespace Beerswap.Controllers
             int beer_qty;
             Regex rx = new Regex("[0-9]+$");
 
-            if (rx.IsMatch(form.Get("beerposting-quantity")))
+            if ((rx.IsMatch(form.Get("beerposting-quantity"))) && (!form.Get("beerposting-quantity").Contains("-")))
             {
                 beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
             }
