@@ -80,7 +80,7 @@ namespace Beerswap.Controllers
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("That's not a number. Please try again.");
+                System.Windows.Forms.MessageBox.Show("That's not a valid number. Please try again.");
                 return RedirectToAction("Index");
             }
            
@@ -137,8 +137,31 @@ namespace Beerswap.Controllers
             string posting_id_string = form.Get("post-id");
             int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
             string posting_user = form.Get("posting-user-id");
-            int beer_qty_offered = Convert.ToInt32(form.Get("swap-quantity-offered"));
-            int beer_qty_wanted = Convert.ToInt32(form.Get("swap-quantity-wanted"));
+            int beer_qty_offered;
+            int beer_qty_wanted;
+
+            Regex rx = new Regex("[0-9]+$");
+
+            if ((rx.IsMatch(form.Get("swap-quantity-offered"))) && (!form.Get("swap-quantity-offered").Contains("-")))
+            {
+                beer_qty_offered = Convert.ToInt32(form.Get("swap-quantity-offered"));
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("That's not a valid number. Please try again.");
+                return RedirectToAction("Index");
+            }
+
+            if ((rx.IsMatch(form.Get("swap-quantity-wanted"))) && (!form.Get("swap-quantity-wanted").Contains("-")))
+            {
+                beer_qty_wanted = Convert.ToInt32(form.Get("swap-quantity-wanted"));
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("That's not a valid number. Please try again.");
+                return RedirectToAction("Index");
+            }
+
             string swap_note = form.Get("swap-note");
             string user_id = User.Identity.GetUserId();
             ApplicationUser brewLover = hopCentral.Users.FirstOrDefault(u => u.Id == user_id);
