@@ -102,7 +102,20 @@ namespace Beerswap.Controllers
 
             int beer_posting_id = Convert.ToInt32(form.Get("post-id"));
             string beer_name = form.Get("beerposting-name");
-            int beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
+            int beer_qty;
+            Regex rx = new Regex("[0-9]+$");
+
+            if ((rx.IsMatch(form.Get("beerposting-quantity"))) && (!form.Get("beerposting-quantity").Contains("-")))
+            {
+                beer_qty = Convert.ToInt32(form.Get("beerposting-quantity"));
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("That's not a valid number. Please try again.");
+                return RedirectToAction("PostHistoryView");
+            }
+
+
             string beer_note = form.Get("beerposting-note");
 
             hopCentral.EditBeerPosting(beer_posting_id, beer_name, beer_qty, beer_note);
